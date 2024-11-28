@@ -1,0 +1,181 @@
+#/* $begin ncopy-ys */
+##################################################################
+# ncopy.ys - Copy a src block of len words to dst.
+# Return the number of positive words (>0) contained in src.
+#
+# Include your name and ID here.
+# student: 522031910213 ZhuHan
+# Describe how and why you modified the baseline code.
+#
+# 1. use the IADDQ to replace ADDQ CPE:12.70
+# 2. use the loop unrolling,choose "6*1" CPE:9.58
+# 3. after reading the materials on webs, found that the remainder part of the loop will take # high cost(exp:len is 59,need to execute a 5-len loop at the end).So decide to use diffrent 
+# bench for each remainder.According to the results from the webs,choose the "8*1" and make 
+# benches of "1 2 3 4". CPE:7.68
+# 4. the condition tree can be optimized since the "1" case is much costly higher. I choose 
+# the "len <4"case to be like this:        
+#						len<4
+#					     /    |    \
+#					  len=1 len=0 len>1
+#						      /   \
+#						   len=2 len=3
+# then the CPE: 7.65
+# 5. found that the program still exist the "use/load" hazard which will make bubbles,but i 
+# am not able to resolve this by just modifying the code part.maybe need to modify the hcl 
+# file so that the hazard can be optimized.this idea is not fulfilled yet.
+# ps. I learned that the %rax will be init as 0 from a webpage, so I use this trick which 
+# cancel the XORQ instruction at the beginning,this make the CPE to be: 7.58
+#
+##################################################################
+# Do not modify this portion
+# Function prologue.
+# %rdi = src, %rsi = dst, %rdx = len
+ncopy:
+
+##################################################################
+# You can modify this portion
+# Loop header
+         #xorq %rax,%rax           # count = 0;
+         iaddq $-8,%rdx		  # len-=8;
+         jl L4			  # if len<8 goto L4
+Loop8:
+         mrmovq (%rdi), %r10        # read val from src...
+         mrmovq 8(%rdi), %r11       # read val from src...
+         mrmovq 16(%rdi), %r12      # read val from src...
+         mrmovq 24(%rdi), %r13      # read val from src...
+         mrmovq 32(%rdi), %r14      # read val from src...
+         mrmovq 40(%rdi), %r8       # read val from src...
+         mrmovq 48(%rdi), %r9       # read val from src...
+         mrmovq 56(%rdi), %rbp      # read val from src...
+         rmmovq %r10, (%rsi)        # ...and store it to dst
+         rmmovq %r11, 8(%rsi)       # ...and store it to dst
+         rmmovq %r12, 16(%rsi)      # ...and store it to dst
+         rmmovq %r13, 24(%rsi)      # ...and store it to dst
+         rmmovq %r14, 32(%rsi)      # ...and store it to dst
+         rmmovq %r8, 40(%rsi)       # ...and store it to dst
+         rmmovq %r9, 48(%rsi)       # ...and store it to dst
+         rmmovq %rbp, 56(%rsi)      # ...and store it to dst
+         andq %r10, %r10            # val <= 0?
+         jle n1			    # decide the 8 numbers to be positive or not
+         iaddq $1,%rax     # count++
+n1:
+         andq %r11, %r11            # val <= 0?
+         jle n2
+         iaddq $1,%rax     # count++
+n2:
+         andq %r12, %r12            # val <= 0?
+         jle n3
+         iaddq $1,%rax     # count++
+n3:
+         andq %r13, %r13            # val <= 0?
+         jle n4
+         iaddq $1,%rax     # count++
+n4:
+         andq %r14, %r14            # val <= 0?
+         jle n5
+         iaddq $1,%rax     # count++
+n5:
+         andq %r8, %r8              # val <= 0?
+         jle n6
+         iaddq $1,%rax     # count++
+n6:
+         andq %r9, %r9              # val <= 0?
+         jle n7
+         iaddq $1,%rax     # count++
+n7:
+         andq %rbp, %rbp            # val <= 0?
+         jle n8
+         iaddq $1,%rax     # count++
+n8:
+         iaddq $64,%rdi
+         iaddq $64,%rsi
+         iaddq $-8,%rdx
+         jge Loop8         #if len >=8 go to Loop8
+L4:			   #len<8 case
+         iaddq $4,%rdx
+         jl L1             # if len<4 go to L1
+Loop4:
+         mrmovq (%rdi), %r10        # read val from src...
+         mrmovq 8(%rdi), %r11       # read val from src...
+         mrmovq 16(%rdi), %r12      # read val from src...
+         mrmovq 24(%rdi), %r13      # read val from src...
+         rmmovq %r10, (%rsi)        # ...and store it to dst
+         rmmovq %r11, 8(%rsi)       # ...and store it to dst
+         rmmovq %r12, 16(%rsi)      # ...and store it to dst
+         rmmovq %r13, 24(%rsi)      # ...and store it to dst
+         andq %r10, %r10            # val <= 0?
+         jle n41
+         iaddq $1,%rax     # count++
+n41:
+         andq %r11, %r11            # val <= 0?
+         jle n42
+         iaddq $1,%rax     # count++
+n42:
+         andq %r12, %r12            # val <= 0?
+         jle n43
+         iaddq $1,%rax     # count++
+n43:
+         andq %r13, %r13            # val <= 0?
+         jle n44
+         iaddq $1,%rax     # count++
+n44:
+         iaddq $32,%rdi
+         iaddq $32,%rsi
+         iaddq $-4,%rdx
+         
+L1:				    #len<4 case
+         iaddq $3,%rdx
+         je N11			    # if len=1 goto N11	
+         jg L2			    # if len>1 goto L2
+         ret			    # if len<1 return
+N11:
+         mrmovq (%rdi), %r10        # read val from src...
+         rmmovq %r10, (%rsi)        # ...and store it to dst
+         andq %r10, %r10            # val <= 0?
+         jle Done          
+         iaddq $1,%rax     # count++
+         ret 
+         
+L3:				    # len=3 case
+         mrmovq (%rdi), %r10        # read val from src...
+         mrmovq 8(%rdi), %r11       # read val from src...
+         mrmovq 16(%rdi), %r12      # read val from src...
+         rmmovq %r10, (%rsi)        # ...and store it to dst
+         rmmovq %r11, 8(%rsi)       # ...and store it to dst
+         rmmovq %r12, 16(%rsi)      # ...and store it to dst
+         andq %r10, %r10            # val <= 0?
+         jle N31           
+         iaddq $1,%rax     # count++
+N31:
+         andq %r11,%r11
+         jle N32
+         iaddq $1,%rax
+N32:
+         andq %r12,%r12		    #this path means 4+3 remains 7, so just return is ok
+         jle Done
+         iaddq $1,%rax
+         ret
+L2:			 	    #len=2,3 case
+         iaddq $-1,%rdx		    # if len>2 goto L3
+         jg L3
+         mrmovq (%rdi), %r10        # read val from src...
+         mrmovq 8(%rdi), %r11       # read val from src...
+         rmmovq %r10, (%rsi)        # ...and store it to dst
+         rmmovq %r11, 8(%rsi)       # ...and store it to dst
+         andq %r10, %r10            # val <= 0?
+         jle N21           
+         iaddq $1,%rax     # count++
+N21:	
+         andq %r11,%r11
+         jle Done
+         iaddq $1,%rax
+         
+##################################################################
+# Do not modify the following section of code
+# Function epilogue.
+Done:
+	ret
+##################################################################
+# Keep the following label at the end of your function
+End:
+#/* $end ncopy-ys */

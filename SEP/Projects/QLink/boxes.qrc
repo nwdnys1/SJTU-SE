@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>ac1.png</file>
+        <file>ac2.png</file>
+        <file>br.png</file>
+        <file>fr.png</file>
+        <file>ft1.png</file>
+        <file>ft2.png</file>
+        <file>kn1.png</file>
+        <file>kn2.png</file>
+        <file>mg1.png</file>
+        <file>mg2.png</file>
+        <file>help1.png</file>
+        <file>help2.png</file>
+        <file>save/archive1.txt</file>
+        <file>save/archive2.txt</file>
+        <file>save/archive3.txt</file>
+        <file>save/archive4.txt</file>
+        <file>save/archive5.txt</file>
+        <file>save/archive6.txt</file>
+    </qresource>
+</RCC>

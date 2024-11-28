@@ -1,0 +1,1068 @@
+Problem Chosen
+ Team Control Number
+ A
+ 2024
+ MCM/ICM
+ Summary Sheet
+ 2410115
+ Flexible Sex Ratios: Exploring the Impact on
+ Lamprey and Ecosystem Stability
+ Summary
+ Sea lampreys can adjust their sex ratio based on external environments. This adaptive sex ratio
+ variation, along with lampreys’ position as both parasites and food sources, plays a special role in
+ different ecosystems. To derive the effect of variable sex ratios on lamprey and ecosystems, here are
+ our methods.
+ In Problem 1, we build the initial model: Lamprey’s Sex Ratio-Based Ecosystem Model, namely
+ the LSE Model. Based on Logistic Model and Lotka-Volterra Predation Model, we construct a
+ basic ecosystem containing lampreys, humans, and lampreys’ prey. By changing lampreys’ initial prey
+ amounts, we prove the spectacular capability of lampreys to adapt the ecosystem by changing their sex
+ ratio.
+ In Problem 2, we compare the performance of lampreys with their competitors from 2 different
+ dimensions. Wecomparetheperformance of lampreys with one of their competitors in both segregated
+ andmutualenvironments. Thechangeinsexratioofferstheextraordinaryabilityforlampreystosurvive
+ in extreme conditions, but lampreys are not competitive enough when food is abundant, as the adaptive
+ sex ratio variation restricts its growth rate.
+ In Problem 3, to analyze the stability of ecosystems, we construct an ecosystem network based
+ on our LSE Model. In our Optimized-LSE(OLSE) model, 8 different species share the same living
+ environment. Thus, inspired by the Shannon-Wiener Index, we provide the Ecosystem Diversity
+ Index (EDI) based onspecies richness, food chain length, and average species abundance in the OLSE
+ model. We use simulated data from OLSE and obtained EDI based on linear regression. Then, we
+ present the Ecosystem Stability Index (ESI) according to the pattern of EDI. The result shows that
+ the further the lamprey’s sex ratio deviates from 0.56, the stronger the ecosystem’s stability is.
+ In Problem 4, to discuss and analyze whether lamprey’s adaptive sex ratio mode provides advan
+tages to other species in the ecosystem, we introduce three types of parasites into our previous OLSE
+ model. The three types of parasites count on lampreys to survive, The third edition- LPE model
+ is launched due to the inspiration of infectious viruses. By putting a sight on the parasite and fish
+ community, we find that the change in sex ratio can also benefit other species, such as enhancing the
+ diversity and complexity of the parasite community. It is worth thinking that the change in lamprey’s
+ sex ratio also benefits the surrounding ecosystem.
+ Finally, we conducted a sensitivity analysis on the models we established, which proves the
+ stability and reliability of the models, and shows the rationality of parameter selection. Our models
+ also have many advantages, including being concise yet highlighting the problem, having a rigorous
+ logical derivation process for the model parameters, etc. More details are discussed deeply at the end
+ of the paper.
+ Keywords: Lamprey; Logistic Model; Lotka-Volterra Model; Ecosystem Diversity; Shannon-Wiener
+ Index
+Team2410115 Page2of25
+ Contents
+ 1 Introduction 3
+ 1.1 Background . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+ 1.2 RestatementoftheProblem. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+ 1.3 OverviewofOurWork . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+ 2 GeneralAssumptions 4
+ 3 Notation 4
+ 4 Model1:Lamprey’sSexRatio-BasedEcosystem(LSE)Model 5
+ 4.1 DescriptionofLargerEcosystem. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+ 4.1.1 EcosystemLogisticandLotka-VolterraPredatingModel[2] . . . . . . . . . . 5
+ 4.1.2 Lamprey’sSexRatiosAnalysis. . . . . . . . . . . . . . . . . . . . . . . . . . 6
+ 4.2 ParameterSolution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+ 4.3 Problem1: ImpactofLampreys’VariableSexRatioonLargerEcosystem . . . . . . . 9
+ 4.4 Problem2:AdvantagesandDisadvantagesofAdaptiveSexRatio . . . . . . . . . . . 10
+ 4.4.1 Situation1:LampreysandCompetitorsinSegregatedEcosystems . . . . . . . 10
+ 4.4.2 Situation2:LampreysandCompetitorsinaMutualEcosystem. . . . . . . . . 11
+ 5 Model2:OptimizedLSEwithEcosystemStabilityEvaluation(OLSE-ESE)Model 13
+ 5.1 OptimizationoftheLSEmodel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+ 5.1.1 IntroducingMoreSpecies . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+ 5.1.2 OLSEDynamicSimulation . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+ 5.2 EcosystemStabilityEvaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+ 5.2.1 EcosystemDiversityIndex(EDI) . . . . . . . . . . . . . . . . . . . . . . . . 16
+ 5.2.2 LinearRegression:SolvetheWeightofEDI. . . . . . . . . . . . . . . . . . . 17
+ 5.2.3 EcosystemStabilityIndex(ESI) . . . . . . . . . . . . . . . . . . . . . . . . . 18
+ 5.3 Problem3:HowAdaptiveSexRatioModeAffecttheEcosystemStability . . . . . . . 18
+ 6 Model3:Lamprey-ParasiteEcosystem(LPE)Model 19
+ 6.1 DescriptionofParasites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+ 6.2 Problem4:AdaptiveSexRatioMode’sAdvantagestoOtherSpecies . . . . . . . . . 20
+ 7 SensitivityAnalysis 22
+ 7.1 TheSensitivityAnalysisofLSEModel . . . . . . . . . . . . . . . . . . . . . . . . . 22
+ 7.2 TheSensitivityAnalysisofLinearRegression . . . . . . . . . . . . . . . . . . . . . . 22
+ 8 StrengthandWeakness 23
+ Reference 24
+ 9 Appendix 25
+ 9.1 ExcerptsfromourMatlabcode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+Team 2410115
+ Page 3 of 25
+ 1 Introduction
+ 1.1 Background
+ Thesex ratio is important for understanding species’ survival strategies and adaptive mechanisms.
+ While most species have a sex ratio close to 1:1 at birth, exceptions exist. The sea lamprey is a
+ species that adjusts its sex ratio to different environmental conditions. In food-poor environments, the
+ proportion of males increases significantly, while in food-rich environments, the proportion of males
+ decreases relatively. Sea lampreys have garnered significant attention from scientists due to not only
+ their adaptive sex ratio variation but also their crucial role in various ecosystems. For instance, sea
+ lampreys may be considered parasites in some lakes, while they serve as a food source for humans
+ in other regions. Therefore, it is crucial to study the impact of the sea lampreys’ adaptive sex ratio
+ variation on ecosystems.
+ 1.2 Restatement of the Problem
+ Considering the background information identified in the problem statement, we need to focus on
+ the impact of sex ratios on the ecosystem and finish the following tasks:
+ 1) Task 1 Construct a mathematical model to help analyze the impact of lampreys’ variable sex
+ ratio on the larger ecosystem where other species exist.
+ 2) Task 2 Explain the advantages and disadvantages of sea lamprey’s adaptive sex ratio variation
+ to its population.
+ 3) Task 3 Consider changes in the sex ratio of sea lampreys and how these changes affect the
+ stability of the ecosystem.
+ 4) Task 4 Discuss and analyze whether this adaptive sex ratio mode provides advantages to other
+ species in the ecosystem, such as parasites.
+ 1.3 Overview of Our Work
+ Figure 1: Overview of Our Work
+Team 2410115
+ Page 4 of 25
+ 2 General Assumptions
+ Through careful analysis, we make the following basic assumptions to simplify the problem.
+ • Assumption 1: For how species affect each other, there is a direct interaction between predators
+ and prey, i.e., the number of predators affects the mortality rate of prey.
+ Justification: Researchershaveobservedthatpredatorabundanceoractivitylevelsinfluenceprey
+ mortality rates. For example, when predator populations increase, there is often a corresponding
+ increase in prey mortality due to predation.
+ • Assumption 2:The survival and reproduction of predators in the ecosystem model depends on
+ the amount of prey they take.
+ Justification:The survival and reproduction of predators depend on the amount of prey they
+ consume is justified by the principles of energy flow and trophic interactions in ecosystems.
+ • Assumption 3: Lampreys do not differentiate between the sexes at the larval stage but rather go
+ through a certain growth cycle to differentiate between male and female sexes at adulthood.
+ Justification: According to related research[1], it was found that Lampreys’ sex could be labile
+ until larvae reach 140 mm and capable of changing in 8–16 weeks. They will differentiate into
+ different sexes based on different growth rates.
+ • Assumption 4: The population of Lampreys does not change significantly discretely.
+ Justification: Lampreys have a certain reproductive cycle and maturation period, which means
+ they can’t reproduce all the time. Meanwhile, their mortality rate does not usually fluctuate
+ extremely over a short period.
+ 3 Notation
+ The primary notations used in this paper are listed in Table 1.
+ Table 1: Notations
+ Symbols
+ Definition
+ H
+ L
+ M
+ α
+ η
+ γ
+ c
+ µ
+ λ
+ φ
+ population density of lamprey’s preys(fish)
+ population density of lampreys
+ ratio of male lampreys
+ natural growth rate of lamprey’s preys(fish)
+ energy conversion rate of lampreys
+ natural mortality of lampreys
+ the rate of lamprey larvae differentiating into adults
+ species richness of the ecosystem
+ food chain length of the ecosystem
+ average species abundance in the ecosystem
+Team 2410115
+ Page 5 of 25
+ 4 Model1: Lamprey’s Sex Ratio-Based Ecosystem(LSE) Model
+ 4.1 Description of Larger Ecosystem
+ Based on the background introduced, Lampreys feeds primarily by parasitizing other fish, while
+ preying on plankton. At the same time, the population of lampreys reduces due to human fishing
+ activities. To clearly describe the larger ecosystem, we consider in this ecosystem there are two main
+ population, lampreys and their prey. To simulate the activities between lampreys, prey, and humans,
+ we define the parameter p. To find out the relation between lamprey’s sex ratio and this ecosystem, we
+ define the male sex ratio M and the female sex ratio F.
+ 4.1.1 Ecosystem Logistic and Lotka-Volterra Predating Model [2]
+ Figure 2: Basic Ecosystem Based on Logistic and Lotka-Volterra Predating Model
+ Considering in this ecosystem, the population density of lamprey L(t), the population density of
+ lampreys’ prey H(t), and the ratio of male lampreys M(t) changes continuously over time. Due to
+ environmental constraints, there is a theoretical limit to the fish population. We denote this limit as
+ Hmax. First, we examine changes in the population of lampreys’ prey in the ecosystem. For now, we
+ consider the most basic case: the growth without any environmental limitations. Under this situation,
+ the population of lampreys’ prey should meet equation (1). α represents the natural growth rate of the
+ lamprey’s prey.
+ dH(t)
+ dt =α·H(t)
+ (1)
+ However, from the Logistic growth model, we know the population of prey won’t keep growing.
+ The equation should include the maximum population retardation factor (1 − H(t)
+ Hmax
+ ). So we correct
+ equation (1) to equation (2).
+ dH(t)
+ dt =α·H(t)·(1− H(t)
+ Hmax
+ )
+ (2)
+ In this ecosystem, not only does the prey’s growth affect its population, but lampreys’ hunting
+ reduces the population of prey as well. Considering the probability of lampreys hunting preys as ppre,
+ we know the reduction of prey’s population due to lampreys’ hunting is ppre · H(t) · L(t). Hence, we
+ further equation (2) to equation (3), which mainly represents the change in prey population.
+ dH(t)
+ dt =α·H(t)·(1− H(t)
+ Hmax
+ ) −ppre · H(t) · L(t)
+ (3)
+Team 2410115
+ Page 6 of 25
+ Next, we examine changes in the population of lampreys in the ecosystem. Based on the Lotka
+Volterra model, the change in the lamprey’s population consists of three components. Since lampreys
+ hunt prey, part of the growth of the lamprey’s population comes from the energy gained from digesting
+ the prey. This part of the energy is used to reproduce new lampreys. We denote this increase as ∆Lpre.
+ Besides, lampreys’ population decreases due to natural mortality and human harvesting, respectively
+ ∆Ldea and ∆Lhum. Hence, the population of lampreys should meet equation (4).
+ dL(t)
+ dt =∆Lpre−∆Ldea−∆Lhum
+ (4)
+ Respectively, according to the law of conservation of energy, ∆Lpre equals to η·ppres·H(t)·L(t).
+ We assume that the effect of natural death on population is linear, ∆Ldea equals to γ · L(t). Finally,
+ ∆Lhum equals to phum · L(t) because we note that phum represents the probability of human fishing
+ lampreys. Thus, we can convert equation (4) into equation (5).
+ dL(t)
+ dt =η·ppre ·H(t)·L(t)−γ ·L(t)−phum ·L(t)
+ 4.1.2 Lamprey’s Sex Ratios Analysis
+ (5)
+ For now, equations about changes in the population of lampreys and prey have been set. To
+ introduce the sex ratio effect into our model, we consider 2 special characteristics of lampreys:
+ 1. Whenthefoodis adequate and the environment is stable, the male ratio of lamprey is still greater
+ than its female ratio.
+ 2. As is shown in the research[5], when lamprey parents giving birth, they both die. So in the case
+ of a high male ratio, the birth rate is lower due to the low female ratio.
+ To match this trend in lamprey’s birth rates when its sex ratio changes[6], the increase ∆Lpre from
+ hunting prey should include the sex ratio factor M(t)·(1−M(t)−c)
+ (1−c
+ 2 )2
+ . So wecorrect equation (5) to equation
+ (6), which mainly represents the change of the lamprey’s population.
+ dL(t)
+ dt = M(t)·(1−M(t)−c)
+ (1−c
+ 2 
+)2
+ · η · ppre · H(t) · L(t) − γ · L(t) − phum · L(t)
+ (6)
+ Finally, to find out the change in male sex ratio M over time, we write down the equation (7)
+ according to the definition of male sex ratio, which is the ratio of current male lampreys to total
+ lampreys. The total male lampreys at the next moment are the total males at the current moment
+ Lmale(t) plus the male lampreys newly differentiated from larvae ∆Ldif. Besides, we need to take male
+ reduction due to natural mortality ∆Ldea into consideration.
+ M(t+dt) = Lmale(t+dt)
+ L(t +dt) = Lmale(t)+∆Ldif −∆Ldea
+ L(t +dt)
+ (7)
+Team 2410115
+ Page 7 of 25
+ Respectively, we calculate the total males at the current moment Lmale(t) is M(t) · L(t). The
+ newly-differentiated males ∆Ldif is c · P · L(t)dt. The reduction due to natural mortality ∆Ldea is
+ d · M(t)· L(t)dt. We successfully obtain the following equation (8).
+ M(t+dt) = M(t)·L(t)+c·P ·L(t)dt−γ ·M(t)·L(t)dt
+ L(t +dt)
+ (8)
+ Here, we use the idea of approximate processing. Because we have assumed that in a short period,
+ the population of Lampreys does not change significantly, we can let L(t + dt) = L(t) approximately.
+ Hence, equation (9) is ready.
+ dM(t)
+ dt =M(t+dt)−M(t)
+ dt
+ =c·P −γ·M(t)
+ (9)
+ Nowwehavelearned how the sex ratio and the population of lampreys and their prey change over
+ time. From equation (3), (6) and (9), a system of equations (10) that can represent the relationship
+ between the three variables is shown as follows.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 4.2 Parameter Solution
+ dH(t)
+ dt =α·H(t)·(1− H(t)
+ Hmax
+ ) −ppre · H(t) · L(t)
+ dL(t)
+ dt = M(t)·(1−M(t)−c)
+ (1−c
+ 2 
+)2
+ dM(t)
+ dt =c·P −γ·M(t)
+ · η · ppre · H(t) · L(t) − γ · L(t) − phum · L(t)
+ (10)
+ To obtain the relationship between the sex ratio and populations of predator and prey species, we
+ try to solve the parameters of the differential equations described above.
+ First of all, we can analyze parameters from related ecological data[3]: natural growth rate of
+ lamprey’s prey α, energy conversion rate of lampreys η, natural mortality of lampreys γ, the probability
+ of human fishing lampreys phum. And we hypothesize Hmax to be 1000.
+ It is evident from the analysis that When P = M(t), Equation (9) becomes biologically meaning
+ful: the male ratio of the lamprey population should remain unchanged when the ratio of males at time
+ t equals the ratio of individuals that are about to differentiate into males. Consequently, the left-hand
+ side of the Equation 3 should be 0, which leads to c = γ.
+ For the parameter P, the probability of lampreys differentiating into males, we get inspired by
+ the Logistic function. The Logistic function is often used to feature changes in a biological system’s
+ characteristics. We use the Logistic function to reveal the relation between P and the amount of food
+ H(t)
+ L(t) 
+. As the basic Logistic function, P should meet the following equation (11). (A, B and U are
+ parameters)
+ P(H(t)
+ L(t) ) = A+B·(e−UH(t)
+ L(t) + 1)
+ (11)
+Team2410115 Page8of25
+ Asmentioned in thebackground,whenfoodavailability isextremely low, themale ratioof
+ lampreyscanreachapproximately0.78. ThisindicatesthatM=0.78representsamaximumvalue.
+ Consideringbasicmathematicalprinciples, itfollowsthatwhenM=0.78, theleft-handsideofthe
+ equationshouldbeequalto0.Similarly,itisstatedinthebackgroundthatwhenfoodisabundant,the
+ maleratioof lampreysstabilizesaround0.56. ThisimpliesthatwhenM=0.56, theleft-handside
+ of theequationisalsoequal to0. Basedonthesetwoconditions,wecandeducethatP(0)=0.78
+ andP(+∞)=0.56. Fromthecalculationabove,weobtainA=1,B=0.44.Besides,functione−x
+ isapproximatelyequalsto0whenx>5. Hence,wesetU=0.5andthusPmeetsthefollowing
+ equation(12).
+ P(H(t)
+ L(t) )=1+0.44·(e−0.5H(t)
+ L(t)+1) (12)
+ Tosolvetheremainingunknownparameters,weareinspiredbythefixedpoint intheLogistic
+ model. Weknowthatwhen theequations reachafixedpoint, dH(t)
+ dt
+ = dL(t)
+ dt
+ = dM(t)
+ dt
+ =0, the
+ functionsbecomestable.Soweusethevalueofthefixedpointtosolvetheremainingparameters.For
+ convenience,wesett=0.Wehavethefollowingequationsystem(13).
+ 
+          
+          
+ 0=α·H(0)·(1−H(0)
+ Hmax
+ )−ppre·H(0)·L(0)
+ 0=M(0)·(1−M(0)−c)
+ (1−c
+ 2
+ )2
+ ·η·ppre·H(0)·L(0)−γ·L(0)−phum·L(0)
+ 0=c·P−γ·M(0)
+ (13)
+ AccordingtoourhypothesisandtheLogisticmodel,thepopulationofpreybecomesstablewhen
+ it ishalfofitsmaximumcapacityHmax.Besides,biologytellsusthehighertherankofthespecies,
+ the lower thepopulationsize. Therefore theeffectofpredator lampreysonprey’spopulationsize
+ relativetotheenvironmentisnegligible.SotheinitialvalueH(0)=Hmax
+ 2
+ canbeknown.Meanwhile,
+ whenthefoodisreadilyavailable, themodelshouldbecomestable.Wecanalsoget theinitialvalue
+ M(0)=0.56.
+ Fornow,westillhave1unknownparameterphumtosolve.Bysubstitutingtheknownparameters
+ andinitialvaluesintotheequation(13),wecandeduceppre= γ
+ ηH(0)
+ .Additionally,wecanobtainthe
+ initialvalueL(0)= α
+ 2ppre
+ as thefixedpointof thismodel. As illustratedintable2below, all the
+ parameterofourmodelissolved.
+ Table2:ParameterSolution
+ Hmax α η γ phum ppre c P
+ 1000 0.2 0.1 0.1 0.01 0.002 0.1 1+0.44·(e−0.5H(t)
+ L(t)+1)
+Team 2410115
+ Page 9 of 25
+ 4.3 Problem 1: Impact of Lampreys’ Variable Sex Ratio on Larger Ecosystem
+ From the parameters and the equation we get in 4.1 and 4.2, we can generate the figure of H(t),
+ L(t), and M(t) based on the ode45 method. We choose H(0) = 500 to represent the lampreys’ food
+ in the environment being adequate. Our work is clearly shown in following Figure 3.
+ (a) Lamprey Population Dynamics
+ (b) Fish Prey Population Dynamics
+ Figure 3: Dynamic Population of Lamprey and its Prey with Different Initial Size H0
+ AsisshowninFigure3(a), thepopulationoflampreyandpreyfirstchangesincurveandeventually
+ converges to a definite value. It demonstrates that lamprey can effectively adjust its population under
+ the same initial sex ratio and population despite the different populations of prey in larger ecosystems.
+ Finally, the population of both lamprey and prey reaches an optimized number. It is worth mentioning
+ that the less the prey is initially, the more quickly the bottom of the curve appears.
+ To find out how lampreys do this magic trick, we carefully observe the dynamic of lampreys’ sex
+ ratio when the population of prey in a larger ecosystem is different. Changes in the ecosystem are
+ continuous. As is shown in Figure 3(b), lampreys’ sex ratio first changes in the curve and eventually
+ converges to a definite value of 0.56. It is worth mentioning that the more the prey are initially, the
+ more quickly the top of the curve appears.
+ Based onFigures 3(a) and 3(b), for problem 1, we conclude that under all circumstances, lampreys
+ canalwaysadjusttheirsexratiotocontrolthepopulationintheecosystemtoanoptimizedfoodavailable
+ situation. This mode guarantees lampreys havingthebest living environment andadequatefood. Under
+ different initial external environments, the adjusting speed of this mode changes to effectively meet this
+ need.
+Team 2410115
+ Page 10 of 25
+ 4.4 Problem 2: Advantages and Disadvantages of Adaptive Sex Ratio
+ For Problem 2, we want to explain the advantages and disadvantages of sea lamprey’s adaptive
+ sex ratio variation to its population. Based on the Lotka-Volterra competitive theory, we introduce the
+ lamprey’s competitor into the ecosystem improve our LSE model, and choose 2 different situations to
+ demonstrate the advantages and disadvantages of the lamprey’s mode. We also adopt the method of
+ controlling variables in our study.
+ 4.4.1 Situation 1: Lampreys and Competitors in Segregated Ecosystems
+ Figure 4: Situation 1: Lampreys and Competitors in Segregated Ecosystems
+ Consider lampreys and competitors living in segregated ecosystems with the same initial con
+ditions, the only difference is their sex ratio changing mode. For normal competitors, we assume
+ that their sex ratio is always fixed to a certain number, such as 1:1. Analogously, we can obtain the
+ following ecological equation system (14) to demonstrate the ecosystem of the competitor. R means
+ the population density of competitors. H expresses the population density of competitors’ prey.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ dR(t)
+ dt =η·ppre ·T(t)·R(t)−(γ +phum)·R(t)
+ dH(t)
+ dt =α·H(t)·(1− H(t)
+ Hmax
+ ) −ppre · H(t) · R(t)
+ (14)
+ Then, we put lamprey and its competitor into different ecosystems. They should have different
+ results according to their sex ratio mode. We choose to change the initial population of the lamprey.
+ The Effect of Sex Ratio Mode on Lampreys and its Competitor is shown in Table 3. The Dynamic
+ Population of Lamprey and its Competitor is shown in Figure 5. As is illustrated in the table and Figure
+ 5 (b), the curve converges to 0 when L(0) = 400 for competitor, which means they are extinct. So, the
+ adaptive sex ratio mode makes lamprey more likely to survive in the food-poverty ecosystem than its
+ competitors.
+ L(0)
+ 100
+ 200
+ 400
+ Lamprey Survived Survived Survived
+ Competitor Survived Survived Extinct
+ Table 3: The Effect of Sex Ratio Mode on Lampreys and its Competitor
+Team 2410115
+ Page 11 of 25
+ (a) Dynamics of Lamprey Population
+ (b) Dynamics of Competitor Population
+ Figure 5: Dynamic Population of Lamprey and its Competitor with Different Initial Sizes
+ From our model, we know when the competitor’s sex ratio is fixed, the maximum capacity of
+ competitor Rmax is 398. As a comparison, we change the initial sex ratio of lamprey. Table 4
+ clearly shows that under different initial sex ratios, lampreys always outperform their competitors in
+ the maximum population capacity.
+ M(0) 0.5 0.55 0.6 0.65 0.7 0.75 0.8
+ Lmax 400 403 407 411 418 423 432
+ Table 4: Maximum Population of Lamprey under Different Initial Sex Ratio
+ In a nutshell, under situation 1, the adaptive sex ratio mode of lamprey promises promise advan
+tages to the population in avoiding lamprey becoming extinct and gives lamprey a larger population
+ capacity.
+ 4.4.2 Situation 2: Lampreys and Competitors in a Mutual Ecosystem
+ Figure 6: Situation 2: Lampreys and Competitors Share a Mutual Ecosystem
+Team2410115 Page12of25
+ Insituation2, lampreysanditscompetitorsshareamutualecosystem. Sowehavetoimprove
+ ouroriginalLSEmodel. AccordingtothebasicLotka-Volterracompetitivemodel,weobtainthe
+ followingequationsystem(15),whichrepresentsthecompetitiverelationshipbetweenlampreysLand
+ itscompetitorR.Andirepresentsthecompetitivefactorbetweenthesetwospecies.
+ 
+     
+     
+ dL
+ dt =αL·L· 1− L
+ Lmax
+ −iRE
+ R
+ Rmax
+ dR
+ dt =αR·R· 1− R
+ Rmax
+ −iER
+ L
+ Lmax
+ (15)
+ Tosimplifythemodel andcontrolvariables,weassume that lampreyanditscompetitoronly
+ compete inamutual foodresourceH. Under thisassumption,wecanknowLmax=Rmax and
+ Lmax∝H. Sowedefinethemaximumpopulationcapacityfactore.WehaveLmax=Rmax=kH.
+ Besides,wededuceiRE=iER=1.
+ Meanwhile,underthiscircumstance, theadaptivesexratioworksbyonlyaffectingthebirthrate
+ oflampreyratherthanthegrowthrate. SowechangegrowthrateαLintoβ−γ,whereβmeansthe
+ birthrateandγmeansthenaturaldeathrate. Basedonequation(10)andourvariablecontrolling,
+ thenewecosystemwhichcontainslamprey,competitor,andpreyshouldmeet thefollowingequation
+ system(16).
+ 
+                 
+                 
+ dH(t)
+ dt =α·H(t)·(1−H(t)
+ Hmax
+ )−ppre·H(t)·L(t)−ppre·H(t)·R(t)
+ dL(t)
+ dt =((M(t)·(1−M(t)−c)
+ (1−c
+ 2
+ )2
+ )·β−γ)·L(t)·(1−R(t)+L(t)
+ kH(t) )−phum·L(t)
+ dR(t)
+ dt =(β−γ)·R(t)·(1−R(t)+L(t)
+ kH(t) )−phum·R(t)
+ dM(t)
+ dt =c·P−M(t)·γ
+ (16)
+ Duringthiscourse,wecontrolmajorbiologicalvariablesoflampreysandlampreys’competitor
+ tobethesamedespitetheirsexratiomodesothatwecannoticehowtheadaptivesexratiomodeof
+ lampreystakeseffect.Hence,thenaturalbirthrateanddeathrateofthecompetitorarerespectivelyβ
+ andγ.Theprobabilitytheyfishedbyhumanequalstophum.
+ Then,weneedtosolvetheunknownparameterk. Likewise,weareinspiredbythefixpoint in
+ themodel.Whenweimproveourmodel,wewant tocontrolall theotherparametersconsistentwith
+ theoriginalmodel.Sothefixpointinourimprovedmodelshouldremainthesameastheoriginalone.
+ Analogously,weobtainthevalueofparameterkasfollowingmethod(17).
+ H(0)=Hmax
+ 2 ,L(0)= α
+ 2ppre
+ ,M(0)=0.56⇒k= α
+ ppreHmax
+ (17)
+Team 2410115
+ Page 13 of 25
+ Finally, we can simulate the dynamic population of lamprey and its competitor in the same
+ environment in Figure 7. As is shown in Figure 7(a), we choose the initial value L(0) = R(0) =
+ 100,M(0) = 0.6,whichmeansthefoodinthisecosystemisratherinsufficient. Inthiscase,lampreystill
+ successfully outperforms its competitor in maintaining its population and surviving this competition.
+ However, in Figure 7(b), the initial value L(0) = R(0) = 20,M(0) = 0.6 means the food is
+ rather adequate in this ecosystem. But lamprey loses this competition against its competitor due to its
+ adaptive sex ratio.
+ (a) Population in Food Shortage Environment
+ (b) Population in Food Adequate Environment
+ Figure 7: Dynamic Population of Lamprey and its Competitor in the same Environment
+ From our analysis, we can conclude that this sex ratio mode of lamprey enables them to survive
+ the competition when there’s in shortage of food but extinct when the food is enough. Based on the
+ conclusions under the 2 situations above, we can now answer Problem 2: the advantage of this sex ratio
+ mode is that lampreys are harder to control when they fiercely invade another environment because
+ they are more competitive in bad environments[4]. Meanwhile, the disadvantage is that lampreys can’t
+ survive the long-term competition in a food-adequate environment.
+ 5 Model 2: Optimized LSE with Ecosystem Stability Evaluation
+ (OLSE-ESE) Model
+ Toeffectively analyzethestability of the natural environment, we choosetointroducemorespecies
+ into our original LSE model. In this optimized OLSE model, there will be a complete ecologic net
+ that simulates the real ecosystem. Besides, our newly constructed evaluation method ESE plays an
+ important role in the wholemodel. ESEisanaccuratemodelthatcanreflecttheabilityofecosystemsto
+ maintaintheir structural andfunctional stability. CombiningOLSEwithESE,weobtaintheOLSE-ESE
+ model to analyze the ecosystem stability.
+Team 2410115
+ Page 14 of 25
+ 5.1 Optimization of the LSE model
+ 5.1.1 Introducing More Species
+ Considering there are more species in this ecosystem, we have 3 levels of species. At the top
+ of the pyramid, the only top predator D (a kind of animal but not human) hunting lampreys L and
+ lampreys’ competitor R. In the middle of the pyramid, lampreys and lampreys’ competitor hunt 3 kinds
+ of different fishes H1,H2,H3 as prey for their living. At the bottom of the pyramid, these 3 kinds of
+ f
+ ishes feed on the natural resources G and have a fixed natural growth rate and death rate. As is shown
+ in Figure 8, this optimized ecosystem contains 8 different species.
+ Figure 8: OLSE Ecosystem Pyramid
+ Just like the equation system we have set in paragraph 4, we can also obtain the following equation
+ systems (18), (19), (20). In equation system (18), the population of 3 kinds of prey should meet this
+ relation. According to the pyramid, prey H1 and H3 feed on the same natural resource, so their natural
+ growth shares the same constraints H1max = H3max. Prey H2 is both hunted by lamprey and lamprey’s
+ competitor, so the factor changes to (L + R).
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ dH1
+ dt =α1·H1·(1− H1+H3
+ H1max 
+)−ppre1 · H1 ·L
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ dH2
+ dt =α2·H2·(1− H2
+ H2max
+ ) −ppre2 · H2 · (L +R)
+ dH3
+ dt =α3·H3·(1− H1+H3
+ H3max 
+)−ppre3 · H3 ·R
+ (18)
+ Likewise, equation system (19) shows how the population of lamprey and its competitor change.
+ Because there exist a higher level predator D, so the population decrease due to D, ∆DL = pDL ·L·D
+ and ∆DR = pDL·R·D. pLR representstheprobability of top predator hunting lampreys and lamprey’s
+ competitors.
+Team 2410115
+ Page 15 of 25
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ dL
+ dt =(M ·(1−M −c)
+ (1−c
+ 2 
+)2
+ ) · η · (ppre1H1 + ppre2 · H2) · L − pDL · L·D −(phum +γ)·L
+ dM
+ dt =c·P −M·γ
+ dR
+ dt =η·(ppre2 · H2 +ppre3 · H3) · R −pDL ·R·D −(phum +γ)·R
+ (19)
+ Finally, based on the Lotka-Volterra Predation model, the population of the top predator D should
+ meet equation (20). ηD expresses the energy conversion rate of the top predator.
+ dD
+ dt =pDL·ηD ·(L+R)·D−m·D
+ 5.1.2 OLSEDynamic Simulation
+ (20)
+ Fromthesystemofequationswehaveobtained,thefollowingFigure9demonstratesthepopulation
+ dynamics in the OLSE model. We found that the population of H1,H3,L,R changes in curves
+ periodically in the end. Meanwhile, the population of H2,D keeps a linear growth at first and will
+ eventually converge to a defined value. It means OLSE can effectively provide simulated data for our
+ analysis of the stability of the ecosystem.
+ Figure 9: Population Dynamics of OLSE
+Team 2410115
+ Page 16 of 25
+ 5.2 Ecosystem Stability Evaluation
+ Based on our optimized ecosystem model OLSE, we can get amounts of simulation data easily.
+ Thus, in this part, we present the method to evaluate ecosystem stability. We first introduce the
+ EcosystemDiversityIndex(EDI).Ecologicaldiversityiskeytothehealthandfunctionoftheecosystem.
+ EDI reflects the diversity of species in the ecosystem. For further research, the Ecosystem Stability
+ Index (ESI) is defined based on EDI. Ecosystem stability is the ability of an ecosystem to maintain its
+ structure and function in the face of external disturbances and internal changes. ESI reflects the ability
+ of ecosystems to maintain their structural and functional stability.
+ 5.2.1 Ecosystem Diversity Index (EDI)
+ To make an overall evaluation of the diversity of the ecosystem, we have to collect enough
+ information from our OLSE ecosystem. This previous research inspired us to set the EDI equation (21)
+ and choose the three following impact factors. wi is their weight respectively:
+ EDI =w1·µ+w2·λ+w3·φ
+ (21)
+ 1. Species richness of the ecosystem µ: Species richness is an important concept in ecology,
+ which refers to the number of different species in a given area. It is one of the basic indicators of
+ biodiversity, reflecting the diversity of species within the region. In our EDI index, the species
+ richness of the ecosystem is represented by an integer number µ.
+ 2. Food chain length of the ecosystem λ: Food chain length describes the number of steps in
+ an ecosystem in which energy is transferred from producers to final consumers. Simply put,
+ the length of a food chain is the number of trophic levels in the food chain, with each trophic
+ level representing a link in this energy transfer process. In our EDI index, an integer number λ
+ expresses this food chain length.
+ 3. Average species abundance in the ecosystem φ: Species abundance refers to the density of
+ individuals of a particular species in an ecosystem. It reflects the prevalence or rarity of the
+ species in the area. In our EDI index, we put the abundance of all species into consideration and
+ get our average species abundance in the ecosystem.
+ Basedontheenergybalancetheoryofecosystems[7],ahealthyandstableecosystemcanmaintain
+ a state of relative energy equilibrium, where the input of energy (mainly solar energy) is roughly
+ equal to the output of energy (mainly heat loss and productivity of organisms). According to
+ the OLSE pyramid, equation (22) shows the average species abundance in the ecosystem, which
+ considers the energy factor in the food chain.
+ 3
+ φ =
+ i=1
+ Hi + L+R
+ η + D
+ η · ηD
+ (22)
+Team 2410115
+ Page 17 of 25
+ 5.2.2 Linear Regression: Solve the Weight of EDI
+ For now, we want to solve each weight in the EDI equation. From ecology, we can learn the
+ Shannon-Wiener Index N is an important index used to quantify the diversity of biomes in ecology,
+ providing a comprehensive measure of ecosystem diversity (in equation (23)), Xi represents the
+ proportion of the number of species i in all the species). So we want our EDI index as close as possible
+ to the Shannon-Wiener Index.
+ 6
+ N =−
+ i=1
+ Xiln(Xi)
+ (23)
+ Based on the OLSE model, we change the parameters to simulate the ecosystem under different
+ situations. For each situation, we can accurately calculate the S-W Index. To improve the performance
+ and reliability of the EDI index, we normalized the S-W Index as the EDI value for our reference. As
+ is shown in Table 5, the OLSE model provides enough data for our EDI index (we choose 52 different
+ situations in total). Finally, based on the linear regression approach, we solved for the values of the
+ individual weights under our OLSE model as is shown in Table 6.
+ µ λ φ S-WIndex ReferenceEDI
+ 4 2 2952.2 0.6462-2.2142
+ 5 2 2960.6 0.7732
+ 5 3 3681.6 1.0991
+ 5 4 7077.8 1.3509
+ 6 2 3805.9 0.7846
+ 6 3 1809.8 0.9716
+ 6 4 3541.9 1.3165
+ 7 4 3518.6 1.3219
+ 7 4 2948.4 1.3564
+ 8 4 4085.1 1.4804-1.6816-0.3135
+ 0.7431-1.6337-0.8487
+ 0.5986
+ 0.6212
+ 0.7660
+ 1.2867
+ Table 5: A Tiny Subset of All Simulated Data Based on OLSE and Reference EDI
+ w1
+ w2
+ w3
+ 0.1911 0.7143 0.3221
+ Table 6: Solved Weight of EDI Based on Linear Regression
+ Figure 10 (a) clearly shows that our final Predicted EDI (calculated on equation (21)) is very close
+ to Reference EDI, which demonstrates its good performance. The R-squared value here is 0.9526. To
+ further prove the accuracy of EDI, we make a Quantile-Quantile plot of residuals. As is illustrated in
+ Figure 10 (b), the sample quantiles is close to the theoretical quantiles line, which prove the residuals
+ follow a normal distribution and our EDI model is reasonable and accurate.
+Team 2410115
+ Page 18 of 25
+ (a) Differences in Reference EDI and Predicted EDI
+ (b) Quantile-Quantile Plot of Residuals
+ Figure 10: Linear Regression: Analyze the Accuracy
+ 5.2.3 Ecosystem Stability Index (ESI)
+ Ecosystem stability is the key indicators of ecosystem health and sustainability. The ESI index
+ allows us to quantify the stability of the environment in an ecosystem. An ecosystem with a high
+ degree of stability is less vunlerable to external disturbance. According to National Ecological Status
+ Specification[8], Ecosystem Stability Index (ESI) is defined as following Equation (24). V ar(EDIt)
+ represent the EDI’s variance from initial moment to moment t. Ave(EDIt) express the EDI’s mean
+ value from initial moment to moment t. The smaller the ESI is, the better the stability of the ecosystem
+ owns.
+ ESI = Var(EDIt)
+ Ave(EDIt)
+ (24)
+ 5.3 Problem 3: How Adaptive Sex Ratio Mode Affect the Ecosystem Stability
+ Ultimately, we utilized the OLSE model to generate data on the changes in population numbers
+ under different initial sex ratios and calculated the Ecosystem Diversity Index (EDI) and Ecosystem
+ Stability Index (ESI) curves over time, as well as the relationship curve between ESI and sex ratio
+ during the extrapolation process of the OLSE model.
+ Figure 11(a) presents the trends of EDI and ESI in our OLSE model when the initial sex ratio
+ M(0) = 0.6. It can be observed that with the passage of time, EDI gradually increases and stabilizes,
+ indicating that the diversity and complexity of the ecosystem continuously grow during the natural
+ evolutionary process and eventually stabilize as the ecosystem stabilizes; The ESI first increases and
+ then decreases over time, suggesting that the ecosystem is relatively unstable in the initial stages of
+ evolution, experiencing significant changes in function and diversity, but returns to stability in the final
+ stages of evolution. Such changing trends align with our expectations for the evolutionary trajectory
+ of a normal ecosystem.
+Team 2410115
+ Page 19 of 25
+ (a) Time-EDI and Time-ESI Dynamics
+ (b) Male Ratio-ESI Relationship
+ Figure 11: Problem 3 Solving: Adaptive Sex Ratio Mode and the Ecosystem Stability Relationship
+ Figure 11(b) shows how ecosystem stability evolves with changes in the sex ratio of lampreys
+ during the ecosystem’s evolutionary process. Under different initial sex ratios, the Male Ratio-ESI
+ relationship curves generally follow the same pattern, i.e., the ecosystem’s stability is relatively poor
+ whenthe maleratio is close to 0.56, but as the male ratio deviates from 0.56, stability strengthens. This
+ trend maybeduetotheabilityforlampreystoalteritssexratiodependingonresourceavailability; when
+ the male ratio significantly deviates from 0.56, lampreys respond more sensitively to the environment,
+ thereby more stably adapting to the ecosystem and indirectly leading to stronger overall ecosystem
+ stability.
+ Based on our OLSE model and the EDI/ESI evaluation, we can ultimately conclude that the
+ lamprey’s ability to alter the sex ratio has a significant impact on ecosystem stability during the
+ ecosystem’s evolutionary process, and the further the lamprey’s sex ratio deviates from 0.56, the
+ stronger the ecosystem’s stability.
+ 6 Model3: Lamprey-Parasite Ecosystem(LPE) Model
+ To discuss and analyze whether lamprey’s adaptive sex ratio mode provides advantages to other
+ species in the ecosystem, we introduce three types of parasites into our previous OLSE ecosystem.
+ They all parasitize on the lamprey and form a parasite community. We also choose to use the diversity
+ and complexity of the parasite community to evaluate its advantages. Then, we analyze how this sex
+ ratio mode affects the diversity of parasites based on Shannon-Wiener Index.
+ 6.1 Description of Parasites
+ Considering that viruses parasitize on hosts just like parasites on lampreys, we get inspired by the
+ Susceptible-Infected-Recovered (SIR) model. SIR is a classical infectious disease model for describing
+ the dynamic transitions between susceptible, infected, and emigrating individuals[9]. However, in this
+Team 2410115
+ Page 20 of 25
+ ecosystem, those lampreys that have recovered from parasites will not be immune to other parasites.
+ For simplicity, we assume that one lamprey can only be infected by one kind of parasite. So we have
+ to rewrite the basic SIR model (in formula (25)) into an SI model based on the OLSE ecosystem.
+ l expresses the growth rate factor of the parasite. r refers to the rate of lampreys recovering from
+ parasites.
+ dS
+ dt =−l· SI
+ L , dI
+ dt = l· SI
+ L −r·I, dR
+ dt =r·I
+ (25)
+ First, we rewrite thepopulationoflampreysL = SL+ 3
+ i=1 
+ILi. Weruleouttheeffectofrecovered
+ lampreys due to our assumption. And when there are 3 kinds of different parasites, lampreys consist of
+ 4 different partitions. SL represents those lampreys that are susceptible to any kind of parasites. We
+ also provide ILi(i = 1,2,3) to represent the number of infectious lampreys respective to 3 different
+ kinds of parasites. We also assume that there will only be one cause of death at one moment. From the
+ basic SIR model (25), we add equation system (26) to our original OLSE model, which expresses the
+ dynamic of these 4 kinds of lampreys. Besides, lampreys also die from the parasites with a probability
+ of m.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 3
+ dSL
+ dt =
+ i=1
+ 3
+ ri · ILi − SL ·
+ i=1
+ li · ILi − (phum + γ) · SL −pDL ·SL ·D
+ +(M ·(1−M −c)
+ (1−c
+ 2 
+)2
+ ) · η · (ppre1H1 + ppre2 · H2) · L
+ dILi
+ dt =−(ri +mi)·ILi +li ·SL ·ILi −(phum +γ)·ILi −pDL ·ILi ·D
+ 6.2 Problem 4: Adaptive Sex Ratio Mode’s Advantages to Other Species
+ (26)
+ (a) Short-term Time-SW Index Dynamics
+ (b) Long-term Time-SW Index Dynamics
+ Figure 12: Problem 4 Solving: Adaptive Sex Ratio Mode’s Advantages to Parasite Community
+Team 2410115
+ Page 21 of 25
+ Figure 12 illustrates the results obtained from our new model regarding the diversity of parasite
+ communities. Figure 12(a) displays the short-term trends in the Shannon index of parasite communities
+ within two different ecosystems. The curve for ecosystems with variable sex ratios in the lamprey
+ population is notably higher than that for ecosystems without lampreys. This suggests that, in the early
+ stages of ecosystem evolution, the diversity and complexity of parasites are positively influenced by
+ the presence of lampreys. Figure 12(b) presents the long-term trends in the Shannon index of parasite
+ communities. It can be observed that, in ecosystems lacking species with variable sex ratios, the
+ Shannon index of parasites gradually declines to zero, indicating its eventual extinction. In contrast,
+ ecosystems with lampreys, despite experiencing significant drops in the Shannon index due to the
+ extinction of certain parasites, ultimately stabilize at a certain value. This indicates a strong stabilizing
+ effect of lampreys on the parasite within their ecosystems.
+ Theresults generated by our OLSEmodelwithparasite communities suggest that the ability of sea
+ lampreys to vary their sex ratios confers significant advantages on the parasite communities within their
+ ecosystems. These advantages include an enhancement of diversity in the short term and a positive
+ impact on the stable survival of parasites in the long term.
+ Figure 13: Problem 4 Solving: Adaptive Sex Ratio Mode’s Advantages to Fish Community
+ Figure 13 presents the results of applying the same approach to fish communities within an
+ ecosystem. Similar to the analysis of parasite communities, the Shannon index of fish communities
+ in an ecosystem with lampreys is significantly higher compared to one without lampreys. However,
+ unlike parasites, all fish species can survive relatively stably regardless of the presence of lampreys,
+ and their Shannon index gradually approaches stability.
+ Based on the analysis of fish and parasite communities mentioned above, we can conclude that
+ an ecosystem with variable sex ratios in the lamprey population does provide significant advantages
+ for other species. For parasites and fish, lampreys enhance their diversity and complexity, while also
+ enabling long-term stable survival. Considering our analysis of the third question, such results are
+ in line with expectations: the ability of lampreys to vary sex ratios strengthens the adaptability and
+ stability of the entire ecosystem, while also providing advantages for other species in terms of diversity
+ and complexity.
+Team 2410115
+ Page 22 of 25
+ 7 Sensitivity Analysis
+ 7.1 TheSensitivity Analysis of LSE Model
+ To test the sensitivity of our model, we change the certain variable H(t) while other variables
+ stay unchanged. We choose H(0) = 200, H(0) = 350, H(0) = 500,H(0) = 650,H(0) = 800 to
+ respectively represent different food amount in different environments. Our work is clearly shown in
+ Figure 14.
+ (a) Lampery Population Dynamics
+ (b) Fish Prey Population Dynamics
+ (c) Sensitivity Analysis Of Sex Rate Dy
+namics
+ Figure 14: Sensitivity Analysis Of LSE Model
+ As is shown in Figure 14(a), the population of both the lamprey and the prey begin to change in
+ curve and finally merge to a definite value. It demonstrates that the lampreys can automatically adjust
+ their population within a certain range when the number of prey changes dramatically. The slope drops
+ or soars dramatically at the first stage and then decreases to 0 gradually. In Figure 14(b), the population
+ of the preys also merge to a definite value in the end. It is also worth mentioning that the less the prey
+ is initially, the more quickly it reaches the bottom of the curve.
+ We also simulate the dynamic of lampreys’ sex ratio as the population of the prey varies. As
+ is shown in Figure 14(c), lampreys’ sex ratio initially changes in the curve and eventually converges
+ to a definite amount of 0.56. The smaller H(0) is, the bigger the slope is initially. Still, the slope
+ soars dramatically in the first and finally drops to zero and the sex rate remains stable, following the
+ requirement of the problem. It is also worth mentioning that the less the prey is initially, the more
+ quickly it reaches the bottom of the curve.
+ BasedonFigures3and4,wecanjumptotheconclusionthatourmodelisrobustwhenconsidering
+ this parameter.
+ 7.2 TheSensitivity Analysis of Linear Regression
+ Whensolving the weight of the EDI index, we use the method of Linear Regression.[10]Here, we
+ will introduce the method of Data Perturbation.
+ Data Perturbation involves making slight adjustments to the data. It can entail adding random
+ noise to input features or making minor modifications to the response variables. It’s important to
+Team 2410115
+ Page 23 of 25
+ ensure that the magnitude of perturbation is small enough so as not to completely alter the fundamental
+ characteristics and distribution of the data. The model is retrained on the perturbed data, and the same
+ performance metrics are recorded once again.
+ WiththehelpofDataPerturbation,theperformancemetricsoftheoriginalmodelandtheperturbed
+ model are compared to assess the sensitivity of the model to changes in the data. We will use Mean
+ Square Area(MSE) to conduct sensitivity analysis.
+ MSE = 1
+ n 
+n
+ i=1
+ (Yi − ˆ Yi)2
+ (27)
+ In equation 27, Yi refers to the real value, while the other one refers to the predicted value. If
+ we use mean squared error (MSE) as a performance metric, we can calculate the percentage change in
+ MSEofthe original model MSE1 and the perturbation model MSE2 to quantify sensitivity.
+ According to our linear regression, the amount of MSE1 is 1.8671. We can compare the
+ percentage change with the help of Table 7
+ MSE2 percentage change
+ 1.8674
+ 0.016%
+ 1.8668
+ 1.8675
+ 1.8673
+ 1,8669
+ 0.016%
+ 0.021%
+ 0.011%
+ 0.011%
+ Table 7: The Percentage change ofMSE1 and MSE2
+ According to Table 7, the average percentage change is 0.015%, which is small enough to demon
+strate the robustness of our linear regression,
+ 8 Strength and Weakness
+ Strength
+ • Simplicity : We summarize the complicated ecosystem into a relatively simple model, which is
+ suitable for solving. Some unimportant factors are neglected to highlight what we want to focus
+ on.
+ • Stability: We conducted sensitivity analysis on the models using different parameters and data
+ source, finding that the results have similar characteristics and comply with our expectations,
+ fully verifying the stability of our models.
+ • Rationality : Our models are adapted from the Logistic model, Lotka-Volterra model, and SIR
+ model, withreasonableparametersthatarederivedfrompreciselogicandreasonableestimations.
+ The resulting curve is also as expected and can be explained.
+Team 2410115
+ Page 24 of 25
+ Weakness
+ • We did not take other environmental factors into account, such as temperature and water flow
+ rate. Research has shown that water flow rate does indeed have an impact on the sex ratio of
+ lampreys[1]. This may require further expansion of the model to research these factors.
+ • The relationship between birth rate and sex ratio may lack persuasiveness. The formula we
+ established for birth rate is based on prior knowledge and some assumptions, requiring additional
+ empirical data or previous research to demonstrate its reliability and rigor.
+ References
+ [1] Johnson, Nicholas S et al. “Field study suggests that sex determination in sea lamprey is di
+rectly influenced by larval growth rate.” Proceedings. Biological sciences vol. 284,1851 (2017):
+ 20170262. doi:10.1098/rspb.2017.0262
+ [2] Din, Q. Dynamics of a discrete Lotka-Volterra model. Adv Differ Equ 2013, 95 (2013).
+ https://doi.org/10.1186/1687-1847-2013-95
+ [3] Miehls, S.M., and Marsden, J.E., 2018, Biodata, net catch, and detection records for juvenile sea
+ lamprey sampled in natural streams in Michigan and Quebec Canada and an artificial stream at
+ USGS Hammond Bay Biological Station during 2011, 2014-2015: U.S. Geological Survey data
+ release, https://doi.org/10.5066/P92FA3PN.
+ [4] A.H.Lawrie(1970)TheSeaLampreyintheGreatLakes, TransactionsoftheAmericanFisheries
+ Society, 99:4, 766-775, DOI: 10.1577/1548-8659(1970)99¡766:TSLITG¿2.0.CO;2
+ [5] Evans, T.M., Janvier, P. & Docker, M.F. The evolution of lamprey (Petromyzontida) life
+ history and the origin of metamorphosis. Rev Fish Biol Fisheries 28, 825–838 (2018).
+ https://doi.org/10.1007/s11160-018-9536-z
+ [6] HARDISTY, M. Sex Composition of Lamprey Populations. Nature 191, 1116–1117 (1961).
+ https://doi.org/10.1038/1911116a0
+ [7] Kedziora, A. (2014). Energy Balance of Ecosystems. In: J. Gli´ nski, J. Horabik, J. Lipiec (eds)
+ Encyclopedia of Agrophysics. Encyclopedia of Earth Sciences Series. Springer, Dordrecht
+ [8] Ministry of Ecology and Environment of the People’s Republic of China. (2021). Technical
+ specification for investigation and assessment of national ecological status——Ecosystem quality
+ assessment (HJ 1172—2021). Retrieved from the Ministry of Ecology and Environment of the
+ People’s Republic of China website
+ [9] Cooper, I., Mondal, A., & Antonopoulos, C. G. (2020). A SIR model assumption for the spread
+ of COVID-19 in different communities. Chaos, Solitons & Fractals, 139, 110057
+ [10] Zone-Ching Lin and Wen-Jang Wu, ”Multiple linear regression analysis of the overlay accuracy
+ model,” in IEEE Transactions on Semiconductor Manufacturing, vol. 12, no. 2, pp. 229-237, May
+ 1999, doi: 10.1109/66.762881.
+Team2410115 Page25of25
+ 9 Appendix
+ 9.1 ExcerptsfromourMatlabcode
+ 1 functiondy= ModelProblem1(t,y......)
+ 2 H=y(1);%Numberoffish
+ 3 L=y(2);%Numberofeels
+ 4 M=y(3);%Maleratiosoflamprey
+ 5 dHdt=a*H*(1-H/K)-b*H*L;
+ 6 dLdt=(M*(1-M-g)/0.2025)*c*b*H*L-(f+d)*L;
+ 7 dMdt=g*(1-0.44/(exp(-0.5*H/L)+1))-M*d;
+ 8 dy =[dHdt;dLdt;dMdt];
+ 9 end
+ 10 functiondy= ModelProblem2(t,y......)
+ 11 ......
+ 12 R=y(4);%Numberofcompetitors
+ 13 dHdt=a*H*(1-H/K)-b*H*L-b*H*R;
+ 14 dLdt=((M*(1-M-g)/0.2025)*i-j)*L*(1-(R+L)/(e*H))-f*L;
+ 15 dRdt=(i-j)*R*(1-(R+L)/(e*H))-f*R;
+ 16 dy =[dHdt;dLdt;dMdt;dRdt];
+ 17 end
+ 18 functiondy= ModelProblem3(t,y......)
+ 19 H1 =y(1);%Numberof fishA
+ 20 ......
+ 21 P=y(7); %Toppredator
+ 22 ......
+ 23 dH1dt=a(1)*H1*(1-(H1+H3)/K1)-b(1)*H1*L;
+ 24 ......
+ 25 dPdt=i*j*(L+R)*P-0.01*P;
+ 26 dy =[dH1dt;dLdt;dMdt;dRdt;dH2dt;dH3dt;dPdt];
+ 27 end
+ 28 %LinearregressionforProblem3dataset
+ 29 filename='dataset.xlsx';
+ 30 dataTbl =readtable(filename);
+ 31 a=dataTbl.a;
+ 32 ......
+ 33 astd =(a-meana)/stda;% NormalizethedatausingZ-scorenormalization
+ 34 ......
+ 35 X=[astd, bstd, cstd];
+ 36 lm=fitlm(X, edistd);%Trainthelinearregressionmodel
+ 37 EDIpred =predict(lm,X); %Usethetrainedmodelforprediction
+ 38 functiondy= ModelProblem4(t,y......)
+ 39 S=y(7);%Numberofsusceptibleeels
+ 40 IL1=y(8);%Numberofeelsinfectedwithparasite1
+ 41 ......
+ 42 dSdt=-S*l1*IL1-S*l2*IL2-S*l3*IL3+...
+ (M*(1-M-g)/0.2025)*c*(b(1)*H1+b(2)*H2)*(S+IL1+IL2+IL3)-(f+d)*S+...
+ r1*IL1+r2*IL2+r3*IL3-i*S*P;
+ 43 dIL1dt=S*l1*IL1-(f+d+m1)*IL1-r1*IL1-i*IL1*P;
+ 44 ......
+ 45 dy =[dH1dt;......;dIL3dt];
+ 46 end
+Report on Use of AI
+ 1. Weused Grammarly for syntax checking.
+ 2. Weused DeepL for some of the translation work.

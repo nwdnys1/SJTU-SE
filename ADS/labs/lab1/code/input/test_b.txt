@@ -1,0 +1,14 @@
+13
+insert 0
+insert 1
+print
+insert 62
+insert 63
+print
+remove 0
+remove 63
+print
+find 0
+find 1
+find 62
+find 63

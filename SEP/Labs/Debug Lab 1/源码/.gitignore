@@ -1,0 +1,9 @@
+!.gitingore
+
+*/
+!P*/
+P*/*
+!P*/*.cpp
+!P*/*.h
+!P*/CMakeLists.txt
+

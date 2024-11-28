@@ -1,0 +1,7 @@
+6
+insert 1
+find 1
+print
+remove 1
+find 1
+print
