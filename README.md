@@ -11,9 +11,13 @@
 - ICS（计算机系统基础）
 - ADS（高级数据结构）
 - MMCS（计算机科学的数学基础）
-- [E-BOOKSTORE](https://github.com/nwdnys1/E-Bookstore)（WEB应用开发技术）
+- [E-BOOKSTORE](https://github.com/nwdnys1/E-Bookstore)（互联网应用开发技术+应用系统体系架构）
 - [JustAsk - 多领域一对一咨询平台](https://github.com/Horizon12275/JustAsk)（软件工程原理与实践）
 - [TimeGenie - AI 日程管理助手 APP](https://github.com/Horizon12275/TimeGenie)（互联网产品设计与开发）
+- AEA（应用系统体系架构）
+- CSE（计算机系统工程）
+- MIIS（智能信息系统建模）
+- 算法设计
 
 ## 贡献者
 

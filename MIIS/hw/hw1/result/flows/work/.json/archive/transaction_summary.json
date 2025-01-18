@@ -1,0 +1,41 @@
+{
+    "transaction_summary": {
+      "major_clients": [
+        "Client1"
+      ],
+      "clients": [
+        "Client1",
+        "Client1",
+        "Client1"
+      ],
+      "regular_clients": [
+        "Client1"
+      ],
+      "important_suppliers": [
+        "Supplier1"
+      ],
+      "suppliers": [
+        "Supplier1",
+        "Supplier1",
+        "Supplier1"
+      ],
+      "regular_suppliers": [
+        "Supplier1"
+      ],
+      "top_buyers_by_purchase_volume": [
+        "Client1",
+        "Client1",
+        "Client1"
+      ],
+      "top_sellers_by_sales_volume": [
+        "Supplier1",
+        "Supplier1",
+        "Supplier1"
+      ],
+      "most_frequent_transaction_relationship": {
+        "client": "Client1",
+        "supplier": "Supplier1"
+      }
+    }
+}
+  

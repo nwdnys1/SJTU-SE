@@ -1,0 +1,14 @@
+[
+    {
+        "seller": "卖方A",
+        "total_amount": 1000.0,
+        "transaction_count": 5,
+        "customer_category": "VIP"
+    },
+    {
+        "seller": "卖方B",
+        "total_amount": 500.0,
+        "transaction_count": 2,
+        "customer_category": "普通"
+    }
+]

@@ -1,0 +1,1 @@
+{"InvoiceApprovalSummary":{"approvalStatusRatio":{"approved":"0.55%","manualReview":"3.85%","rejected":"95.60%"},"approvedInvoices":1,"averageInvoiceAmount":3276,"duplicateInvoiceCount":0,"invoicesSentforManualReview":7,"maximumInvoiceAmount":7495,"minimumInvoiceAmount":699,"mostCommonReasonforManualReview":"无法识别发票 错误码：{11201} 人工审批","rejectedInvoices":174,"totalInvoices":182}}

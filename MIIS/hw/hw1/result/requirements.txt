@@ -1,0 +1,11 @@
+jsonpath-rw==1.4.0
+pip==24.2
+ply==3.11
+pytesseract==0.3.13
+requests==2.32.3
+rpa==1.50.0
+setuptools==75.1.0
+six==1.16.0
+tagui==1.50.0
+urllib3==2.2.3
+wheel==0.44.0

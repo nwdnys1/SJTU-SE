@@ -1,0 +1,14 @@
+[
+    {
+        "buyer": "买方A",
+        "total_amount": 1200.0,
+        "transaction_frequency": 4,
+        "customer_category": "VIP"
+    },
+    {
+        "buyer": "买方B",
+        "total_amount": 750.0,
+        "transaction_frequency": 3,
+        "customer_category": "普通"
+    }
+]
