@@ -1,0 +1,1 @@
+find /home/stu/chfs/scripts -type f -name '*.sh' -exec sed -i 's/\r$//' {} +
