@@ -1,0 +1,5 @@
+paho-mqtt==1.6.1
+pyspark==3.4.0
+delta-spark==2.4.0
+flask==3.0.3
+flask-cors==5.0.0

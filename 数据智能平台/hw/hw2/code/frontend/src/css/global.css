@@ -1,0 +1,41 @@
+.header {
+  background-color: white;
+  padding: 0;
+  position: "sticky";
+  top: 0;
+}
+
+.navbar {
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 50px;
+}
+
+svg {
+  vertical-align: baseline;
+}
+
+.footer {
+  text-align: center;
+}
+
+.card-container {
+  margin: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
