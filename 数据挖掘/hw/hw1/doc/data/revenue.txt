@@ -1,0 +1,11 @@
+garcia	Female	5000	California
+anderso	Female	6000	California
+sharma		4000	New Jersey
+smith	Female	8000	New York
+johnson		9000	New York
+garcia	Female	10000	New York
+anderso		12000	California
+jones	Male	3000	New York
+johnson		5500	New York
+jones		6000	California
+garcia	Female		California

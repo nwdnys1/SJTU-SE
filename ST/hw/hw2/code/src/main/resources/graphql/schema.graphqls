@@ -1,0 +1,23 @@
+type Book {
+    id: ID!
+    title: String
+    author: String
+    description: String
+    price: Int
+    cover: String
+    isbn: String
+    bookDetails: BookDetails
+}
+
+type BookDetails {
+    id: ID!
+    rating: Int
+    stock: Int
+    sales: Int
+}
+
+type Query {
+  findBooksByTitle(title: String!): [Book]
+}
+
+

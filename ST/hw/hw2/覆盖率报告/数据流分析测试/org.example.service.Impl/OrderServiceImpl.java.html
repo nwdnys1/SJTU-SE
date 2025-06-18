@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DFTest 覆盖结果</a> &gt; <a href="index.source.html" class="el_package">org.example.service.Impl</a> &gt; <span class="el_source">OrderServiceImpl.java</span></div><h1>OrderServiceImpl.java</h1><pre class="source lang-java linenums">package org.example.service.Impl;
+
+import org.example.DAO.*;
+import org.example.DTO.PageResponse;
+import org.example.entity.OrderRequest;
+import org.example.service.OrderService;
+import org.example.entity.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+    private final OrderDAO orderDAO;
+    private final OrderItemDAO orderItemDAO;
+    private final CartItemDAO cartItemDAO;
+    private final UserDAO userDAO;
+    private final BookDAO bookDAO;
+<span class="fc" id="L28">    public OrderServiceImpl(OrderDAO orderDAO, CartItemDAO cartItemDAO, UserDAO userDAO, BookDAO bookDAO, OrderItemDAO orderItemDAO) {</span>
+<span class="fc" id="L29">        this.orderDAO = orderDAO;</span>
+<span class="fc" id="L30">        this.cartItemDAO = cartItemDAO;</span>
+<span class="fc" id="L31">        this.userDAO = userDAO;</span>
+<span class="fc" id="L32">        this.bookDAO = bookDAO;</span>
+<span class="fc" id="L33">        this.orderItemDAO = orderItemDAO;</span>
+<span class="fc" id="L34">    }</span>
+    public User getUser() {//从数据库里查询id
+<span class="fc" id="L36">        String username = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();</span>
+<span class="fc" id="L37">        return userDAO.getUserByUsername(username);</span>
+    }
+    @Override
+    public Result&lt;List&lt;Order&gt;&gt; getOrders(){
+<span class="fc" id="L41">        return Result.success(orderDAO.getOrdersByUserId(getUser().getId()));</span>
+    }
+    @Override
+    @Transactional
+    public Result&lt;Order&gt; addOrder(OrderRequest request){
+        // 填写订单信息
+<span class="fc" id="L47">        int uid = request.getUid();</span>
+<span class="fc" id="L48">        Order order = new Order();</span>
+<span class="fc" id="L49">        order.setAddress(request.getAddress());</span>
+<span class="fc" id="L50">        order.setTel(request.getTel());</span>
+<span class="fc" id="L51">        order.setReceiver(request.getReceiver());</span>
+<span class="fc" id="L52">        order.setCreateTime(LocalDateTime.now());</span>
+<span class="fc" id="L53">        order.setUser(new User());</span>
+<span class="fc" id="L54">        order.getUser().setId(uid);</span>
+<span class="fc" id="L55">        order.setUid(uid);//设置uid 用于消息队列传递</span>
+<span class="fc" id="L56">        List&lt;OrderItem&gt; orderItems = new ArrayList&lt;&gt;();</span>
+
+        // 根据cid查询购物车项 并检查是否属于当前用户
+<span class="fc" id="L59">        List&lt;CartItem&gt; cartItems = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        for (int cid : request.getCids()) {</span>
+<span class="fc" id="L61">            CartItem cartItem = cartItemDAO.getCartItemById(cid);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">            if (cartItem == null) {</span>
+<span class="fc" id="L63">                return Result.error(400, &quot;购物车项&quot; + cid + &quot;不存在！&quot;,order);</span>
+            }
+<span class="fc bfc" id="L65" title="All 2 branches covered.">            if (cartItem.getUser().getId() != uid) {</span>
+<span class="fc" id="L66">                return Result.error(400, &quot;购物车项&quot; + cid + &quot;不属于您！&quot;,order);</span>
+            }
+<span class="fc" id="L68">            cartItems.add(cartItem);</span>
+<span class="fc" id="L69">        }</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for (CartItem cartItem : cartItems) {</span>
+<span class="fc" id="L71">            int bid=cartItem.getBook().getId();</span>
+            // 创建订单项并设置到订单中
+<span class="fc" id="L73">            OrderItem orderItem = new OrderItem();</span>
+<span class="fc" id="L74">            orderItem.setOrder(order);</span>
+<span class="fc" id="L75">            orderItem.setBook(new Book());</span>
+<span class="fc" id="L76">            orderItem.getBook().setId(bid);</span>
+<span class="fc" id="L77">            orderItem.setQuantity(cartItem.getQuantity());</span>
+<span class="fc" id="L78">            orderItems.add(orderItem);</span>
+            // 更新商品库存和销量
+<span class="fc" id="L80">            BookDetails bookDetails = bookDAO.getBookDetailsById(bid);</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">            if (bookDetails.getStock() &lt; cartItem.getQuantity()) {</span>
+<span class="fc" id="L82">                return Result.error(400, &quot;库存不足！&quot;,order);</span>
+            }
+<span class="fc" id="L84">            bookDetails.setStock(bookDetails.getStock() - cartItem.getQuantity());</span>
+<span class="fc" id="L85">            bookDetails.setSales(bookDetails.getSales() + cartItem.getQuantity());</span>
+<span class="fc" id="L86">            bookDAO.saveDetails(bookDetails);</span>
+            // 从购物车中移除对应的商品项
+<span class="fc" id="L88">            cartItemDAO.deleteById(cartItem.getId());</span>
+<span class="fc" id="L89">        }</span>
+        //order.setOrderItems(orderItems);
+<span class="fc" id="L91">        orderDAO.save(order);//保存订单</span>
+        // int result = 10 / 0;
+<span class="fc" id="L93">        orderItemDAO.saveAll(orderItems);//保存订单项</span>
+        // int result = 10 / 0;
+<span class="fc" id="L95">        return Result.success(order);</span>
+    }
+
+    // 在购物车项列表中查找指定ID的购物车项
+    @Override
+    public CartItem findCartItemById(List&lt;CartItem&gt; cartItems, int cid) {
+<span class="fc" id="L101">        return cartItems .stream()</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                .filter(cartItem -&gt; cartItem.getId() == cid)</span>
+<span class="fc" id="L103">                .findFirst()</span>
+<span class="fc" id="L104">                .orElse(null);</span>
+    }
+
+    @Override
+    public Result&lt;Order&gt; deleteOrder(int id){
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        if(orderDAO.existsById(id)){</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">            if(!Objects.equals(orderDAO.getOrderById(id).getUser().getId(), getUser().getId())){</span>
+<span class="fc" id="L111">                return Result.error(403, &quot;无权删除他人订单！&quot;);</span>
+            }
+<span class="fc" id="L113">            orderDAO.deleteById(id);</span>
+<span class="fc" id="L114">            return Result.success(null);</span>
+        }else{
+<span class="fc" id="L116">            return Result.error(404, &quot;订单不存在！&quot;);</span>
+        }
+    }
+    @Override
+    public Result&lt;List&lt;Order&gt;&gt; getAllOrders() {
+<span class="fc" id="L121">        return Result.success(orderDAO.findAll());</span>
+    }
+    @Override
+    public Result&lt;PageResponse&lt;Order&gt;&gt; searchAllOrders(String keyword, int page, int pageSize, LocalDateTime start, LocalDateTime end){
+<span class="fc" id="L125">        Pageable pageable = PageRequest.of(page - 1, pageSize);</span>
+        Page&lt;Order&gt; orders;
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">        if(keyword.isEmpty())</span>
+<span class="fc" id="L128">            orders = orderDAO.getOrdersByCreateTimeAfterAndCreateTimeBefore(start, end, pageable);</span>
+        else
+<span class="nc" id="L130">            orders = orderDAO.getOrdersByCreateTimeAfterAndCreateTimeBeforeAndOrderItemsBookTitleLike(start, end, &quot;%&quot; + keyword + &quot;%&quot;, pageable);</span>
+<span class="fc" id="L131">        PageResponse&lt;Order&gt; response = new PageResponse&lt;Order&gt;(</span>
+<span class="fc" id="L132">                orders.getTotalElements(),</span>
+<span class="fc" id="L133">                orders.getTotalPages(),</span>
+<span class="fc" id="L134">                orders.getContent()</span>
+        );
+<span class="fc" id="L136">        return Result.success(response);</span>
+    }
+    @Override
+    public Result&lt;PageResponse&lt;Order&gt;&gt; searchOrders(String keyword, LocalDateTime start, LocalDateTime end, int page, int pageSize){
+
+<span class="fc" id="L141">        Pageable pageable = PageRequest.of(page - 1, pageSize);</span>
+        Page&lt;Order&gt; orders;
+<span class="pc bpc" id="L143" title="1 of 2 branches missed.">        if (keyword.isEmpty())//如果关键字为空 则只根据时间查询 这里是因为我发现当关键词为空时 会导致分页结果有问题 比如pageSize为6时只查询到2条 原因不明 只能先这样解决</span>
+<span class="fc" id="L144">            orders = orderDAO.getOrdersByCreateTimeAfterAndCreateTimeBeforeAndUserId(start, end, getUser().getId(), pageable);</span>
+        else
+<span class="nc" id="L146">            orders = orderDAO.getOrdersByCreateTimeAfterAndCreateTimeBeforeAndOrderItemsBookTitleLikeAndUserId(start, end, &quot;%&quot; + keyword + &quot;%&quot;, getUser().getId(), pageable);</span>
+<span class="fc" id="L147">        PageResponse&lt;Order&gt; response = new PageResponse&lt;Order&gt;(</span>
+<span class="fc" id="L148">                orders.getTotalElements(),</span>
+<span class="fc" id="L149">                orders.getTotalPages(),</span>
+<span class="fc" id="L150">                orders.getContent()</span>
+        );
+<span class="fc" id="L152">        return Result.success(response);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

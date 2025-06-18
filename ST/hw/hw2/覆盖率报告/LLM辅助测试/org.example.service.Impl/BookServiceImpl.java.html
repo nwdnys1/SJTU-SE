@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BookServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LLMTest 覆盖结果</a> &gt; <a href="index.source.html" class="el_package">org.example.service.Impl</a> &gt; <span class="el_source">BookServiceImpl.java</span></div><h1>BookServiceImpl.java</h1><pre class="source lang-java linenums">package org.example.service.Impl;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+import org.example.DAO.*;
+import org.example.DTO.PageResponse;
+import org.example.DTO.SalesInfo;
+import org.example.repository.BookTagRepository;
+import org.example.repository.TagRepository;
+import org.example.repository.UploadRepository;
+import org.example.service.BookService;
+import org.example.entity.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+@Service
+public class BookServiceImpl implements BookService {
+	private final BookDAO bookDAO;
+	private final UploadRepository uploadRepository;
+	private final OrderDAO orderDAO;
+	private final CartItemDAO cartItemDAO;
+	private final OrderItemDAO orderItemDAO;
+	private final CommentDAO commentDAO;
+	private final BookTagRepository bookTagRepository;
+	private final TagRepository tagRepository;
+	public BookServiceImpl(BookDAO bookDAO, UploadRepository uploadRepository, OrderDAO orderDAO,
+						   CartItemDAO cartItemDAO, OrderItemDAO orderItemDAO, CommentDAO commentDAO,
+<span class="fc" id="L36">						   BookTagRepository bookTagRepository, TagRepository tagRepository) {</span>
+<span class="fc" id="L37">		this.bookDAO = bookDAO;</span>
+<span class="fc" id="L38">		this.uploadRepository = uploadRepository;</span>
+<span class="fc" id="L39">		this.orderDAO = orderDAO;</span>
+<span class="fc" id="L40">		this.cartItemDAO = cartItemDAO;</span>
+<span class="fc" id="L41">		this.orderItemDAO = orderItemDAO;</span>
+<span class="fc" id="L42">		this.commentDAO = commentDAO;</span>
+<span class="fc" id="L43">		this.bookTagRepository = bookTagRepository;</span>
+<span class="fc" id="L44">		this.tagRepository = tagRepository;</span>
+<span class="fc" id="L45">	}</span>
+	public Result&lt;Book&gt; getBookById(int id) {
+<span class="fc" id="L47">		Book book = bookDAO.getBookById(id);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		if (book != null) {</span>
+<span class="fc" id="L49">			BookDetails bookDetails = bookDAO.getBookDetailsById(id);</span>
+<span class="fc" id="L50">			bookDetails.setComments(commentDAO.getCommentsByBookId(id));// 获取评论列表</span>
+<span class="fc" id="L51">			book.setBookDetails(bookDetails);</span>
+<span class="fc" id="L52">			System.out.println(bookTagRepository.findTidsByBid(id));</span>
+<span class="fc" id="L53">			book.setTags(tagRepository.findTagNamesByTids(bookTagRepository.findTidsByBid(id)));// 通过标签id查询标签名</span>
+<span class="fc" id="L54">			return Result.success(book);</span>
+		} else {
+<span class="fc" id="L56">			return Result.error(404, &quot;书籍不存在！&quot;);</span>
+		}
+	}
+	public Result&lt;List&lt;Book&gt;&gt; getRecommendations(int nums) {
+<span class="fc" id="L60">		return Result.success(bookDAO.getBooksByRatingGreaterThanOrderByRatingDesc(0).subList(0, nums));</span>
+	}
+	public Result&lt;Book&gt; addBook(Book book) {
+<span class="fc" id="L63">		book.getBookDetails().setRating(0);</span>
+<span class="fc" id="L64">		book.getBookDetails().setSales(0);</span>
+<span class="fc" id="L65">		return Result.success(bookDAO.save(book));</span>
+	}
+	public Result&lt;Book&gt; updateBook(int id, Book book) {
+<span class="fc bfc" id="L68" title="All 2 branches covered.">		if (!bookDAO.existsById(id)) {</span>
+<span class="fc" id="L69">			return Result.error(404, &quot;书籍不存在！&quot;);</span>
+		}
+<span class="fc" id="L71">		Book oldBook = bookDAO.getBookById(id);</span>
+<span class="fc" id="L72">		oldBook.setTitle(book.getTitle());</span>
+<span class="fc" id="L73">		oldBook.setAuthor(book.getAuthor());</span>
+		// oldBook.setDescription(book.getDescription());
+		// oldBook.setPrice(book.getPrice());
+		// oldBook.setRating(book.getRating());
+<span class="fc" id="L77">		oldBook.getBookDetails().setStock(book.getBookDetails().getStock());</span>
+<span class="fc" id="L78">		oldBook.setIsbn(book.getIsbn());</span>
+<span class="fc" id="L79">		return Result.success(bookDAO.save(oldBook));</span>
+	}
+	public Result&lt;Book&gt; deleteBook(int id) {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		if (bookDAO.existsById(id)) {</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">			if (cartItemDAO.existsByBookId(id)) {</span>
+<span class="fc" id="L84">				return Result.error(400, &quot;书籍已被用户加入购物车，无法删除！&quot;);</span>
+			}
+<span class="fc bfc" id="L86" title="All 2 branches covered.">			if (orderItemDAO.existsByBookId(id)) {</span>
+<span class="fc" id="L87">				return Result.error(400, &quot;书籍已被用户购买，无法删除！&quot;);</span>
+			}
+<span class="fc" id="L89">			bookDAO.deleteById(id);</span>
+<span class="fc" id="L90">			return Result.success(null);</span>
+		} else {
+<span class="fc" id="L92">			return Result.error(404, &quot;书籍不存在！&quot;);</span>
+		}
+	}
+	public Result&lt;PageResponse&lt;Book&gt;&gt; searchBooks(String keyword, int page, int pageSize) {
+<span class="fc" id="L96">		Pageable pageable = PageRequest.of(page - 1, pageSize);</span>
+<span class="fc" id="L97">		Page&lt;Book&gt; books = bookDAO.getBooksByTitleLikeOrAuthorLike(&quot;%&quot; + keyword + &quot;%&quot;, &quot;%&quot; + keyword + &quot;%&quot;, pageable);</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">		for (Book book : books.getContent()) { // 为每本书添加评论列表 用于计算评论数</span>
+<span class="fc" id="L99">			book.getBookDetails()</span>
+<span class="fc" id="L100">					.setComments(new ArrayList&lt;&gt;(Collections.nCopies(commentDAO.countByBookId(book.getId()), null))); // 一个长度为评论数的空列表</span>
+<span class="fc" id="L101">		}</span>
+<span class="fc" id="L102">		PageResponse&lt;Book&gt; response = new PageResponse&lt;Book&gt;(books.getTotalElements(), books.getTotalPages(),</span>
+<span class="fc" id="L103">				books.getContent());</span>
+<span class="fc" id="L104">		return Result.success(response);</span>
+	}
+	public Result&lt;PageResponse&lt;Book&gt;&gt; searchBookByTagIds(List&lt;Long&gt; tids, int page, int pageSize) {
+<span class="fc" id="L107">		Pageable pageable = PageRequest.of(page - 1, pageSize);</span>
+<span class="fc" id="L108">		Page&lt;Book&gt; books = bookDAO.findBooksByTagIds(tids, pageable);</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		for (Book book : books.getContent()) { // 为每本书添加评论列表 用于计算评论数</span>
+<span class="fc" id="L110">			book.getBookDetails()</span>
+<span class="fc" id="L111">					.setComments(new ArrayList&lt;&gt;(Collections.nCopies(commentDAO.countByBookId(book.getId()), null))); // 一个长度为评论数的空列表</span>
+<span class="fc" id="L112">		}</span>
+<span class="fc" id="L113">		PageResponse&lt;Book&gt; response = new PageResponse&lt;Book&gt;(books.getTotalElements(), books.getTotalPages(),</span>
+<span class="fc" id="L114">				books.getContent());</span>
+<span class="fc" id="L115">		return Result.success(response);</span>
+	}
+	public Result&lt;String&gt; updateCover(int id, MultipartFile file) {
+<span class="fc" id="L118">		Book book = bookDAO.getBookById(id);</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">		if (book == null) {</span>
+<span class="fc" id="L120">			return Result.error(404, &quot;书籍不存在！&quot;);</span>
+		}
+		try {
+<span class="fc" id="L123">			String url = uploadRepository.uploadFile(file, &quot;image&quot;);</span>
+<span class="fc" id="L124">			book.setCover(url);</span>
+<span class="fc" id="L125">			bookDAO.save(book);</span>
+<span class="fc" id="L126">			return Result.success(url);</span>
+<span class="fc" id="L127">		} catch (IOException e) {</span>
+<span class="fc" id="L128">			return Result.error(500, e.getMessage());</span>
+		}
+	}
+	public Result&lt;List&lt;SalesInfo&gt;&gt; rank(LocalDateTime start, LocalDateTime end, int nums) {
+<span class="fc" id="L132">		LinkedHashMap&lt;Integer, SalesInfo&gt; saleInfos = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L133">		List&lt;Order&gt; orders = orderDAO.getOrdersByCreateTimeAfterAndCreateTimeBefore(start, end);// 找到所有时间段内的订单</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">		for (Order order : orders) {</span>
+<span class="fc" id="L135">			List&lt;OrderItem&gt; orderItems = order.getOrderItems();</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">			for (OrderItem orderItem : orderItems) {</span>
+<span class="fc" id="L137">				Integer bid = orderItem.getBook().getId();</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">				if (saleInfos.containsKey(bid)) {</span>
+<span class="fc" id="L139">					saleInfos.get(bid).setSales(saleInfos.get(bid).getSales() + orderItem.getQuantity());</span>
+				} else {
+<span class="fc" id="L141">					saleInfos.put(bid, new SalesInfo(bid, orderItem.getBook().getTitle(), orderItem.getQuantity()));</span>
+				}
+<span class="fc" id="L143">			}</span>
+<span class="fc" id="L144">		}</span>
+<span class="fc" id="L145">		List&lt;SalesInfo&gt; list = new ArrayList&lt;&gt;(saleInfos.values());</span>
+<span class="fc" id="L146">		list.sort((a, b) -&gt; b.getSales() - a.getSales());// 按销量降序排列</span>
+<span class="fc" id="L147">		return Result.success(list.subList(0, Math.min(nums, list.size())));</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

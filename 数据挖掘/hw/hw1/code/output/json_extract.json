@@ -1,0 +1,51 @@
+{
+    "status": "ok",
+    "response": {
+        "submissions": [
+            {
+                "id": "59434767",
+                "timestamp": "2011-11-21 09:21:53",
+                "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:8.0) Gecko/20100101 Firefox/8.0",
+                "remote_addr": "192.168.1.1",
+                "payment_status": "",
+                "data": [
+                    {
+                        "field": "13776121",
+                        "value": "Baylor Dallas"
+                    },
+                    {
+                        "field": "13776401",
+                        "value": "CHF"
+                    },
+                    {
+                        "field": "13777966",
+                        "value": "John Doe"
+                    }
+                ]
+            },
+            {
+                "id": "59474875",
+                "timestamp": "2011-11-21 17:01:22",
+                "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:8.0) Gecko/20100101 Firefox/8.0",
+                "remote_addr": "192.168.1.1",
+                "payment_status": "",
+                "data": [
+                    {
+                        "field": "13776121",
+                        "value": "Healthsouth,"
+                    },
+                    {
+                        "field": "13776401",
+                        "value": "Pneumonia"
+                    },
+                    {
+                        "field": "13777966",
+                        "value": "Jane Doe"
+                    }
+                ]
+            }
+        ],
+        "total": 2,
+        "pages": 1
+    }
+}

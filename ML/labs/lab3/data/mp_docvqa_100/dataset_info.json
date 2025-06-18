@@ -1,0 +1,376 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "mp-doc_vqa",
+  "dataset_size": 22586579920,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00000-of-00029.parquet": {
+      "num_bytes": 124420230,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00001-of-00029.parquet": {
+      "num_bytes": 255412525,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00002-of-00029.parquet": {
+      "num_bytes": 181304702,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00003-of-00029.parquet": {
+      "num_bytes": 241620199,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00004-of-00029.parquet": {
+      "num_bytes": 146979318,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00005-of-00029.parquet": {
+      "num_bytes": 186295968,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00006-of-00029.parquet": {
+      "num_bytes": 227267931,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00007-of-00029.parquet": {
+      "num_bytes": 133145091,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00008-of-00029.parquet": {
+      "num_bytes": 88529724,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00009-of-00029.parquet": {
+      "num_bytes": 143341651,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00010-of-00029.parquet": {
+      "num_bytes": 186660460,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00011-of-00029.parquet": {
+      "num_bytes": 110542613,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00012-of-00029.parquet": {
+      "num_bytes": 152219234,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00013-of-00029.parquet": {
+      "num_bytes": 188794207,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00014-of-00029.parquet": {
+      "num_bytes": 138726162,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00015-of-00029.parquet": {
+      "num_bytes": 78386169,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00016-of-00029.parquet": {
+      "num_bytes": 106639047,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00017-of-00029.parquet": {
+      "num_bytes": 53286317,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00018-of-00029.parquet": {
+      "num_bytes": 115237096,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00019-of-00029.parquet": {
+      "num_bytes": 185212623,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00020-of-00029.parquet": {
+      "num_bytes": 100078676,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00021-of-00029.parquet": {
+      "num_bytes": 177956461,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00022-of-00029.parquet": {
+      "num_bytes": 123260938,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00023-of-00029.parquet": {
+      "num_bytes": 291313462,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00024-of-00029.parquet": {
+      "num_bytes": 282349304,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00025-of-00029.parquet": {
+      "num_bytes": 238449701,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00026-of-00029.parquet": {
+      "num_bytes": 115979394,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00027-of-00029.parquet": {
+      "num_bytes": 214076910,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/val-00028-of-00029.parquet": {
+      "num_bytes": 102526328,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00000-of-00023.parquet": {
+      "num_bytes": 105998202,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00001-of-00023.parquet": {
+      "num_bytes": 145963365,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00002-of-00023.parquet": {
+      "num_bytes": 191910141,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00003-of-00023.parquet": {
+      "num_bytes": 171606167,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00004-of-00023.parquet": {
+      "num_bytes": 269281305,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00005-of-00023.parquet": {
+      "num_bytes": 144860782,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00006-of-00023.parquet": {
+      "num_bytes": 80845791,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00007-of-00023.parquet": {
+      "num_bytes": 150412527,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00008-of-00023.parquet": {
+      "num_bytes": 89628720,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00009-of-00023.parquet": {
+      "num_bytes": 114726339,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00010-of-00023.parquet": {
+      "num_bytes": 111644281,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00011-of-00023.parquet": {
+      "num_bytes": 118656424,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00012-of-00023.parquet": {
+      "num_bytes": 157976329,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00013-of-00023.parquet": {
+      "num_bytes": 219504851,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00014-of-00023.parquet": {
+      "num_bytes": 133452752,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00015-of-00023.parquet": {
+      "num_bytes": 182986260,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00016-of-00023.parquet": {
+      "num_bytes": 148896356,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00017-of-00023.parquet": {
+      "num_bytes": 141870265,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00018-of-00023.parquet": {
+      "num_bytes": 163485440,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00019-of-00023.parquet": {
+      "num_bytes": 259102529,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00020-of-00023.parquet": {
+      "num_bytes": 262877340,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00021-of-00023.parquet": {
+      "num_bytes": 289262055,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/MP-DocVQA@e776eeade5a631d9ae18230ed3ab6213cd063dac/data/test-00022-of-00023.parquet": {
+      "num_bytes": 229086274,
+      "checksum": null
+    }
+  },
+  "download_size": 8574046936,
+  "features": {
+    "questionId": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "doc_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "page_ids": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "answers": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "answer_page_idx": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "data_split": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "image_1": {
+      "_type": "Image"
+    },
+    "image_2": {
+      "_type": "Image"
+    },
+    "image_3": {
+      "_type": "Image"
+    },
+    "image_4": {
+      "_type": "Image"
+    },
+    "image_5": {
+      "_type": "Image"
+    },
+    "image_6": {
+      "_type": "Image"
+    },
+    "image_7": {
+      "_type": "Image"
+    },
+    "image_8": {
+      "_type": "Image"
+    },
+    "image_9": {
+      "_type": "Image"
+    },
+    "image_10": {
+      "_type": "Image"
+    },
+    "image_11": {
+      "_type": "Image"
+    },
+    "image_12": {
+      "_type": "Image"
+    },
+    "image_13": {
+      "_type": "Image"
+    },
+    "image_14": {
+      "_type": "Image"
+    },
+    "image_15": {
+      "_type": "Image"
+    },
+    "image_16": {
+      "_type": "Image"
+    },
+    "image_17": {
+      "_type": "Image"
+    },
+    "image_18": {
+      "_type": "Image"
+    },
+    "image_19": {
+      "_type": "Image"
+    },
+    "image_20": {
+      "_type": "Image"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 31160626856,
+  "splits": {
+    "val": {
+      "name": "val",
+      "num_bytes": 11716758524,
+      "num_examples": 5187,
+      "shard_lengths": [
+        179,
+        179,
+        179,
+        179,
+        279,
+        258,
+        358,
+        179,
+        279,
+        358,
+        358,
+        258,
+        358,
+        279,
+        258,
+        358,
+        179,
+        178,
+        278,
+        256
+      ],
+      "dataset_name": "mp-doc_vqa"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 10869821396,
+      "num_examples": 5019,
+      "shard_lengths": [
+        319,
+        219,
+        319,
+        219,
+        337,
+        318,
+        336,
+        218,
+        318,
+        236,
+        200,
+        336,
+        318,
+        218,
+        218,
+        236,
+        200,
+        218,
+        218,
+        18
+      ],
+      "dataset_name": "mp-doc_vqa"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

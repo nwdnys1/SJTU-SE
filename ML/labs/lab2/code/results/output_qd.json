@@ -1,0 +1,52 @@
+[
+    {
+        "id": "fc6267db9ba02bbb251960231bc87251c581110e4e2b5f3f",
+        "pred_answer": "Gates v. Collier",
+        "real_answer": "Miller v. California"
+    },
+    {
+        "id": "d542fcd45bbf5112eee9127f04ae060a887c8ef2050aa160",
+        "pred_answer": "The context provided does not specify the 1939 film or its author. Please provide more details.",
+        "real_answer": "Charles L. Clifford"
+    },
+    {
+        "id": "cb9214532284b8202912b1b75592832daef0b109593185a0",
+        "pred_answer": "Norman",
+        "real_answer": "Norman"
+    },
+    {
+        "id": "105e7f4d337799315ddf870acc4ff2a62a1e6cdf489086cd",
+        "pred_answer": "Mars",
+        "real_answer": "Sun"
+    },
+    {
+        "id": "5ff08452b84748458e71d82a6d387599969311fd61cd8fd1",
+        "pred_answer": "on film",
+        "real_answer": "erotic thriller film"
+    },
+    {
+        "id": "97b31d6d7a9137c220726ad51a6dca3e957e2c94ce5e65b8",
+        "pred_answer": "No information available",
+        "real_answer": "Parliament"
+    },
+    {
+        "id": "11a7ad9d646184c16480376226d58f1b2754b095563c8344",
+        "pred_answer": "Porayar",
+        "real_answer": "Tharangambadi"
+    },
+    {
+        "id": "3dd1ade26fd583844dd2af051d61eb20856ccc8e23abae59",
+        "pred_answer": "Pleiospilos",
+        "real_answer": "Pleiospilos"
+    },
+    {
+        "id": "f039fe9cc81a0a312f9899beca2fe26b710bf8c3aa23a4d9",
+        "pred_answer": "2013",
+        "real_answer": "2013"
+    },
+    {
+        "id": "a30caa5dafcc37835bfe4093f129017adf4c814e9016e10d",
+        "pred_answer": "Zero",
+        "real_answer": "The Rebirth"
+    }
+]

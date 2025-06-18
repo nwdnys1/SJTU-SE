@@ -1,0 +1,8 @@
+host: 10.119.13.38
+port: 1002
+#pos_scale: 100
+#vel_scale: 10
+logger: true
+#train_type: "APPROACH"
+save_path: "./logs/single_training/"
+#max_steps: 2000

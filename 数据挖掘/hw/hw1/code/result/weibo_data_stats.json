@@ -1,0 +1,8 @@
+{"Unnamed: 0":"count","user_id":99.0,"post_num":99.0,"follower_num":99.0}
+{"Unnamed: 0":"mean","user_id":1522900788.1414141655,"post_num":7867.3535353535,"follower_num":11528386.6565656569}
+{"Unnamed: 0":"std","user_id":226192896.1738800406,"post_num":21635.9472139106,"follower_num":18558105.7646377683}
+{"Unnamed: 0":"min","user_id":1041514813.0,"post_num":4.0,"follower_num":5.0}
+{"Unnamed: 0":"25%","user_id":1272349389.0,"post_num":490.0,"follower_num":802.5}
+{"Unnamed: 0":"50%","user_id":1619323521.0,"post_num":1557.0,"follower_num":516668.0}
+{"Unnamed: 0":"75%","user_id":1705141504.5,"post_num":4373.0,"follower_num":16679627.0}
+{"Unnamed: 0":"max","user_id":1781387491.0,"post_num":132723.0,"follower_num":74798328.0}

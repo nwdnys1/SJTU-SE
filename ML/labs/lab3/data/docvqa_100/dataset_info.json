@@ -1,0 +1,143 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "DocVQA",
+  "dataset_name": "doc_vqa",
+  "dataset_size": 7238377679,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/validation-00000-of-00006.parquet": {
+      "num_bytes": 114817746,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/validation-00001-of-00006.parquet": {
+      "num_bytes": 160435747,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/validation-00002-of-00006.parquet": {
+      "num_bytes": 184452290,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/validation-00003-of-00006.parquet": {
+      "num_bytes": 177861893,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/validation-00004-of-00006.parquet": {
+      "num_bytes": 206232388,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/validation-00005-of-00006.parquet": {
+      "num_bytes": 212034964,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/test-00000-of-00006.parquet": {
+      "num_bytes": 139100923,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/test-00001-of-00006.parquet": {
+      "num_bytes": 161354657,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/test-00002-of-00006.parquet": {
+      "num_bytes": 178752984,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/test-00003-of-00006.parquet": {
+      "num_bytes": 188853064,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/test-00004-of-00006.parquet": {
+      "num_bytes": 211416543,
+      "checksum": null
+    },
+    "hf://datasets/lmms-lab/DocVQA@539088ef8a8ada01ac8e2e6d4e372586748a265e/DocVQA/test-00005-of-00006.parquet": {
+      "num_bytes": 227806678,
+      "checksum": null
+    }
+  },
+  "download_size": 2163119877,
+  "features": {
+    "questionId": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "question_types": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "image": {
+      "_type": "Image"
+    },
+    "docId": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "ucsf_document_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "ucsf_document_page_no": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "answers": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "data_split": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 9401497556,
+  "splits": {
+    "validation": {
+      "name": "validation",
+      "num_bytes": 3578991062,
+      "num_examples": 5349,
+      "shard_lengths": [
+        1092,
+        992,
+        592,
+        800,
+        691,
+        691,
+        491
+      ],
+      "dataset_name": "doc_vqa"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 3659386617,
+      "num_examples": 5188,
+      "shard_lengths": [
+        1065,
+        865,
+        665,
+        700,
+        765,
+        664,
+        464
+      ],
+      "dataset_name": "doc_vqa"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

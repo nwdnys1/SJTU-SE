@@ -1,0 +1,14 @@
+agent:
+  policy_type: mlp  # or "mlp"
+  features: 256
+  nheads: 8
+  num_layers: 3
+  pi_arch: [256, 256]
+  qf_arch: [512, 512]
+  tau: 0.005
+  ent_coef: 0.2
+training:
+  algorithm: ppo            # or "ppo"
+  learning_rate: 0.003
+  gamma: 0.99
+  device: cpu
